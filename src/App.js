@@ -1,14 +1,24 @@
-import logo from "./logo.svg";
+import React, { Suspense } from "react";
+
+// React router dom
+import { Route, Routes } from "react-router-dom";
+
+// Styles
 import "./App.css";
+
+// Pages
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Halo ayang Yiyin, aku udah berhasil deploy nich, wkwkk, wopyuuu</p>
-        <p>TELFON AKU KALO UDAH KELAR BABI AER!!</p>
-      </header>
+      <Suspense>
+        <Routes>
+          <Route path="/" name="Landing page" element={<Home />} />
+          <Route path="/about" name="About page" element={<About />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
