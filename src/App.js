@@ -9,10 +9,12 @@ import "./App.css";
 // Pages
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <div className="App">
+      <Navbar></Navbar>
       <Suspense>
         <Routes>
           <Route path="/" name="Landing page" element={<Home />} />
