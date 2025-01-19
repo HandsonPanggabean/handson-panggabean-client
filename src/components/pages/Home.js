@@ -23,7 +23,7 @@ const Home = () => {
     <div>
       <div>Home page</div>
       <button onClick={() => navigate("/about")}>Go to About page</button>
-      <div>{dummyState}</div>
+      <div className="text-3xl font-bold underline">{dummyState}</div>
     </div>
   );
 };
