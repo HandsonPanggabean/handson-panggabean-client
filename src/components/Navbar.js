@@ -3,11 +3,16 @@ import React from "react";
 // React router dom
 import { useNavigate } from "react-router-dom";
 
+// React icons
+import { FaSun, FaMoon } from "react-icons/fa";
+
 // Images & Icons
 import white_icon_H from "../assets/icons/white_icon_H.png";
+import black_icon_H from "../assets/icons/black_icon_H.png";
 
-const Navbar = () => {
+const Navbar = ({ theme, setTheme }) => {
   const navigate = useNavigate();
+
   return (
     <nav className="sticky top-0 bg-white border-gray-200 dark:bg-black">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -15,12 +20,26 @@ const Navbar = () => {
           onClick={() => navigate("/")}
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src={white_icon_H} className="h-12" alt="Flowbite Logo" />
+          <img
+            src={theme && theme === "dark" ? white_icon_H : black_icon_H}
+            className="h-12"
+            alt="Flowbite Logo"
+          />
           {/* <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Handson
           </span> */}
         </div>
         <div className="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
+          <button
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
+          >
+            {theme === "dark" ? (
+              <FaSun className="text-yellow-500 text-xl" />
+            ) : (
+              <FaMoon className="text-gray-800 text-xl" />
+            )}
+          </button>
           {/* <button
             type="button"
             data-dropdown-toggle="language-dropdown-menu"
@@ -67,7 +86,7 @@ const Navbar = () => {
             English (US)
           </button> */}
           {/* <!-- Dropdown --> */}
-          <div
+          {/* <div
             className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
             id="language-dropdown-menu"
           >
@@ -244,7 +263,7 @@ const Navbar = () => {
                 d="M1 1h15M1 7h15M1 13h15"
               />
             </svg>
-          </button>
+          </button> */}
         </div>
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"

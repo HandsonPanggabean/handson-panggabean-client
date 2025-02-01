@@ -142,7 +142,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-300 dark:bg-gray-900 text-white">
       <div className="flex flex-col md:flex-row items-center justify-center py-40 px-4 md:px-60">
         <div className="md:w-2/5">
           <div className="flex ">
@@ -155,13 +155,16 @@ const Home = () => {
         </div>
 
         <div className="md:w-3/5 text-center md:text-left mt-10 md:mt-0">
-          <h1 className="text-4xl md:text-5xl font-bold">
-            Hi, I'm <span className="text-blue-400">Handson Panggabean</span>
+          <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
+            Hi, I'm{" "}
+            <span className="text-blue-900 dark:text-blue-400">
+              Handson Panggabean
+            </span>
           </h1>
-          <h2 className="text-xl md:text-2xl font-semibold mt-2">
+          <h2 className="text-xl md:text-2xl font-semibold mt-2 text-black dark:text-white">
             Fullstack Developer
           </h2>
-          <p className="text-gray-300 mt-4">
+          <p className="text-black dark:text-gray-300 mt-4">
             Experienced in building and maintaining both front-end and back-end
             systems with knack for creating seamless user experiences.
             Enthusiastic about problem-solving, delivering clean, maintainable
@@ -169,7 +172,7 @@ const Home = () => {
             modern technologies to drive innovative solutions.
           </p>
           <div className="flex justify-center md:justify-start mt-6 gap-4">
-            <div className="bg-gray-700 hover:cursor-pointer rounded-xl">
+            <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
                 onClick={() =>
@@ -183,7 +186,7 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div className="bg-gray-700 hover:cursor-pointer rounded-xl">
+            <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
                 onClick={() =>
@@ -199,7 +202,7 @@ const Home = () => {
                 />
               </div>
             </div>
-            <div className="bg-gray-700 hover:cursor-pointer rounded-xl">
+            <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
                 onClick={() =>
@@ -219,7 +222,7 @@ const Home = () => {
 
       {skills && skills.length > 0 ? (
         <div className="max-w-4xl mx-auto my-10 md:my-0 md:mb-40 mb-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-400">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
             Mastered Tech Stacks
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-10 mt-10 px-4">
@@ -232,7 +235,7 @@ const Home = () => {
                     (skill.name === "Express" ||
                       skill.name === "Socket IO" ||
                       skill.name === "GitHub")
-                      ? "bg-gray-700 rounded-lg"
+                      ? "dark:bg-gray-700 rounded-lg"
                       : ""
                   }
                 >
@@ -249,7 +252,9 @@ const Home = () => {
                     }`}
                   />
                 </div>
-                <div className="font-semibold text-md mt-1">{skill.name}</div>
+                <div className="font-semibold text-md mt-1 text-black dark:text-white">
+                  {skill.name}
+                </div>
               </div>
             ))}
           </div>
@@ -257,14 +262,14 @@ const Home = () => {
       ) : null}
 
       <div className="max-w-4xl mx-auto my-40 md:my-0 md:mb-40 mb-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-400">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
           Work Experiences
         </h2>
         <div className="mt-10 space-y-10 px-4">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="flex items-center flex-col md:flex-row p-4 bg-gray-700 shadow rounded-lg"
+              className="flex items-center flex-col md:flex-row p-4 bg-gray-100 dark:bg-gray-700 shadow rounded-lg"
             >
               <div className="flex items-center ml-0 md:ml-3 md:w-1/5">
                 <img
@@ -274,14 +279,14 @@ const Home = () => {
                 />
               </div>
               <div className="mt-5 md:mt-0 md:w-4/5">
-                <h3 className="text-white text-left font-bold text-xl md:text-2xl">
+                <h3 className="text-black dark:text-white text-left font-bold text-xl md:text-2xl">
                   {exp.company}
                 </h3>
-                <p className="text-left text-blue-400 font-semibold">
+                <p className="text-left text-blue-900 dark:text-blue-400 font-semibold">
                   {exp.position}
                 </p>
                 {exp && exp.descriptions && exp.descriptions.length > 0 ? (
-                  <p className="text-left text-white mt-2 text-sm">
+                  <p className="text-left text-black dark:text-white mt-2 text-sm">
                     <ul class="list-disc ml-3">
                       {exp.descriptions.map((description, idx) => {
                         return <li key={idx}>{description}</li>;
@@ -289,7 +294,7 @@ const Home = () => {
                     </ul>
                   </p>
                 ) : null}
-                <p className="text-sm text-white  -300 text-left mt-2 font-semibold">
+                <p className="text-sm text-black dark:text-white text-left mt-2 font-semibold">
                   {exp.period}
                 </p>
               </div>
