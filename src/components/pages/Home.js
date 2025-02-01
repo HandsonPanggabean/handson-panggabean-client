@@ -142,8 +142,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-gray-300 dark:bg-gray-900 text-white">
-      <div className="flex flex-col md:flex-row items-center justify-center py-40 px-4 md:px-60">
+    <div className="bg-gray-300 dark:bg-gray-900 text-white py-5 md:py-20">
+      <div className="flex flex-col md:flex-row items-center justify-center py-20 px-4 md:px-60">
         <div className="md:w-2/5">
           <div className="flex ">
             <img
@@ -221,7 +221,7 @@ const Home = () => {
       </div>
 
       {skills && skills.length > 0 ? (
-        <div className="max-w-4xl mx-auto my-10 md:my-0 md:mb-40 mb-10">
+        <div className="max-w-4xl mx-auto py-32">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
             Mastered Tech Stacks
           </h2>
@@ -261,7 +261,7 @@ const Home = () => {
         </div>
       ) : null}
 
-      <div className="max-w-4xl mx-auto my-40 md:my-0 md:mb-40 mb-10">
+      <div className="max-w-4xl mx-auto py-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
           Work Experiences
         </h2>
