@@ -302,24 +302,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-      {/* <!-- Skills --> */}
-      <div className="flex justify-center md:justify-start mt-8 gap-6">
-        {/* <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg"
-              alt="HTML5 Logo"
-              className="w-12"
-            />
-            <img
-              src="https://tailwindcss.com/_next/static/media/tailwindcss-logotype.56449b7c2dc7952f4fcd29ad053fdf38.svg"
-              alt="Tailwind CSS Logo"
-              className="w-12"
-            />
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"
-              alt="Figma Logo"
-              className="w-12"
-            /> */}
-      </div>
     </div>
   );
 };
