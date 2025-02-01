@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 // React router dom
 import { Route, Routes } from "react-router-dom";
@@ -13,9 +13,25 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 function App() {
+  const [theme, setTheme] = useState(
+    typeof window !== "undefined" && localStorage.getItem("theme") === "dark"
+      ? "dark"
+      : "light"
+  );
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [theme]);
+
   return (
     <div className="App">
-      <Navbar />
+      <Navbar theme={theme} setTheme={setTheme} />
       <Suspense>
         <Routes>
           <Route path="/" name="Landing page" element={<Home />} />
