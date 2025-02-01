@@ -9,7 +9,7 @@ import white_icon_H from "../assets/icons/white_icon_H.png";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <nav className="bg-white border-gray-200 dark:bg-black">
+    <nav className="sticky top-0 bg-white border-gray-200 dark:bg-black">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div
           onClick={() => navigate("/")}
