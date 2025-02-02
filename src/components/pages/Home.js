@@ -57,6 +57,9 @@ import responsive_web_design_icon from "../../assets/icons/responsive_web_design
 import restful_api_icon from "../../assets/icons/restful_api_icon.jpg";
 import airtable_icon from "../../assets/icons/airtable_icon.png";
 import android_studio_icon from "../../assets/icons/android_studio_icon.svg";
+import react_router_icon from "../../assets/icons/react_router_icon.svg";
+import vitest_icon from "../../assets/icons/vitest_icon.svg";
+import figma_icon from "../../assets/icons/figma_icon.webp";
 
 const Home = () => {
   // const navigate = useNavigate();
@@ -68,8 +71,6 @@ const Home = () => {
   const skills = [
     { url: javascript_icon, name: "Javascript" },
     { url: typescript_icon, name: "Typescript" },
-    { url: npm_icon, name: "NPM" },
-    { url: yarn_icon, name: "Yarn" },
     { url: node_icon, name: "Node" },
     { url: express_icon, name: "Express" },
     { url: sequelize_icon, name: "Sequelize" },
@@ -92,17 +93,22 @@ const Home = () => {
     { url: google_cloud_icon, name: "Google Cloud" },
     { url: socket_io_icon, name: "Socket IO" },
     { url: axios_icon, name: "Axios" },
+    { url: npm_icon, name: "NPM" },
+    { url: yarn_icon, name: "Yarn" },
     { url: html_5_icon, name: "HTML5" },
     { url: ccs_3_icon, name: "CCS3" },
     { url: react_icon, name: "React" },
-    { url: react_icon, name: "React Native" },
     { url: redux_icon, name: "Redux" },
+    { url: react_router_icon, name: "React Router" },
+    { url: react_icon, name: "React Native" },
     { url: vue_icon, name: "Vue" },
-    { url: vite_icon, name: "Vite" },
     { url: vuetify_icon, name: "Vuetify" },
+    { url: vite_icon, name: "Vite" },
+    { url: vitest_icon, name: "Vitest" },
     { url: tailwind_icon, name: "Tailwind" },
     { url: bootstrap_icon, name: "Bootstrap" },
     { url: sass_icon, name: "Sass" },
+    { url: figma_icon, name: "Figma" },
     { url: js_cookie_icon, name: "js-cookie" },
     { url: responsive_web_design_icon, name: "Responsive Web Design" },
     { url: firebase_icon, name: "Firebase" },
@@ -142,7 +148,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-gray-300 dark:bg-gray-900 text-white py-5 md:py-20">
+    <div className="bg-gray-200 dark:bg-gray-900 text-white py-5 md:py-20">
       <div className="flex flex-col md:flex-row items-center justify-center py-20 px-4 md:px-60">
         <div className="md:w-2/5">
           <div className="flex ">
