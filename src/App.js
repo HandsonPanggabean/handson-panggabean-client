@@ -14,9 +14,9 @@ import Footer from "./components/Footer";
 
 function App() {
   const [theme, setTheme] = useState(
-    typeof window !== "undefined" && localStorage.getItem("theme") === "dark"
-      ? "dark"
-      : "light"
+    typeof window !== "undefined" && localStorage.getItem("theme") === "light"
+      ? "light"
+      : "dark"
   );
 
   useEffect(() => {
