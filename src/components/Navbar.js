@@ -14,7 +14,7 @@ const Navbar = ({ theme, setTheme }) => {
   const navigate = useNavigate();
 
   return (
-    <nav className="sticky top-0 bg-white border-gray-200 dark:bg-black">
+    <nav className="sticky top-0 bg-white border-gray-200 dark:bg-black z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div
           onClick={() => navigate("/")}
