@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // React router dom
 // import { useNavigate } from "react-router-dom";
@@ -61,8 +61,15 @@ import react_router_icon from "../../assets/icons/react_router_icon.svg";
 import vitest_icon from "../../assets/icons/vitest_icon.svg";
 import figma_icon from "../../assets/icons/figma_icon.webp";
 
+// Components
+import InputHtmlEditor from "../inputs/InputHtmlEditor";
+
 const Home = () => {
   // const navigate = useNavigate();
+
+  const [messageHtml, setMessageHtml] = useState(
+    '<p><span style="font-size: 24pt; font-family: verdana, geneva, sans-serif;">Greetings! 😁</span></p>'
+  );
 
   const handleOnClickLogos = (url) => {
     window.open(url, "_blank");
@@ -229,7 +236,7 @@ const Home = () => {
       {skills && skills.length > 0 ? (
         <div className="max-w-4xl mx-auto py-32">
           <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
-            Mastered Tech Stacks
+            Tech Stacks
           </h2>
           <div className="flex flex-wrap justify-center items-center gap-10 mt-10 px-4">
             {/* <div className="mt-10 space-y-10 px-4 flex items-center justify-center gap-6"> */}
@@ -292,13 +299,13 @@ const Home = () => {
                   {exp.position}
                 </p>
                 {exp && exp.descriptions && exp.descriptions.length > 0 ? (
-                  <p className="text-left text-black dark:text-white mt-2 text-sm">
-                    <ul class="list-disc ml-3">
+                  <div className="text-left text-black dark:text-white mt-2 text-sm">
+                    <ul className="list-disc ml-3">
                       {exp.descriptions.map((description, idx) => {
                         return <li key={idx}>{description}</li>;
                       })}
                     </ul>
-                  </p>
+                  </div>
                 ) : null}
                 <p className="text-sm text-black dark:text-white text-left mt-2 font-semibold">
                   {exp.period}
@@ -306,6 +313,76 @@ const Home = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto mt-28 p-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
+          Contact Me
+        </h2>
+        <div className="flex justify-center items-center bg-gray-900 mt-10">
+          <div className="w-full p-4 md:p-8 bg-gray-800 rounded-lg shadow-lg space-y-10">
+            <form className="space-y-4">
+              <div className="flex space-x-4">
+                <div className="w-1/2">
+                  <label className="text-left block text-gray-300 mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <label className="text-left block text-gray-300 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+              <div className="flex space-x-4">
+                <div className="w-full">
+                  <label className="text-left block text-gray-300 mb-1">
+                    Subject
+                  </label>
+                  <input
+                    type="text"
+                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="text-left block text-gray-300 mb-1">
+                  Message
+                </label>
+                <InputHtmlEditor
+                  htmlContent={messageHtml}
+                  setHtmlContent={setMessageHtml}
+                  className="w-full bg-white rounded-md text-black"
+                />
+              </div>
+              <div>
+                <label className="text-left block text-gray-300 mb-1">
+                  Message's preview
+                </label>
+                <div
+                  className="break-words overflow-hidden bg-white text-black rounded-lg min-h-[200px]"
+                  dangerouslySetInnerHTML={{ __html: messageHtml }}
+                />
+              </div>
+              {/* <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="px-6 py-2 dark:bg-blue-600 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                >
+                  SEND
+                </button>
+              </div> */}
+            </form>
+          </div>
         </div>
       </div>
     </div>
