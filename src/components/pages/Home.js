@@ -64,11 +64,12 @@ import figma_icon from "../../assets/icons/figma_icon.webp";
 // Components
 import InputHtmlEditor from "../inputs/InputHtmlEditor";
 
-const Home = () => {
+const Home = (props) => {
+  const { theme } = props || {};
   // const navigate = useNavigate();
 
   const [messageHtml, setMessageHtml] = useState(
-    '<p><span style="font-size: 24pt; font-family: verdana, geneva, sans-serif;">Greetings! 😁</span></p>'
+    '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Greetings! 😁</span></p>'
   );
 
   const handleOnClickLogos = (url) => {
@@ -282,7 +283,7 @@ const Home = () => {
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="flex items-center flex-col md:flex-row p-4 bg-gray-100 dark:bg-gray-700 shadow rounded-lg"
+              className="flex items-center flex-col md:flex-row p-4 bg-gray-100 dark:bg-gray-800 shadow rounded-lg"
             >
               <div className="flex items-center ml-0 md:ml-3 md:w-1/5">
                 <img
@@ -320,56 +321,57 @@ const Home = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
           Contact Me
         </h2>
-        <div className="flex justify-center items-center bg-gray-900 mt-10">
-          <div className="w-full p-4 md:p-8 bg-gray-800 rounded-lg shadow-lg space-y-10">
+        <div className="flex justify-center items-center mt-10">
+          <div className="w-full p-4 md:p-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg space-y-10">
             <form className="space-y-4">
               <div className="flex space-x-4">
                 <div className="w-1/2">
-                  <label className="text-left block text-gray-300 mb-1">
+                  <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
                     Name
                   </label>
                   <input
                     type="text"
-                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
                   />
                 </div>
                 <div className="w-1/2">
-                  <label className="text-left block text-gray-300 mb-1">
+                  <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
                     Email
                   </label>
                   <input
                     type="email"
-                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
                   />
                 </div>
               </div>
               <div className="flex space-x-4">
                 <div className="w-full">
-                  <label className="text-left block text-gray-300 mb-1">
+                  <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
                     Subject
                   </label>
                   <input
                     type="text"
-                    className="w-full p-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
                   />
                 </div>
               </div>
               <div>
-                <label className="text-left block text-gray-300 mb-1">
+                <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
                   Message
                 </label>
                 <InputHtmlEditor
+                  key={theme}
                   htmlContent={messageHtml}
                   setHtmlContent={setMessageHtml}
-                  className="w-full bg-white rounded-md text-black"
+                  theme={theme}
                 />
               </div>
               <div>
-                <label className="text-left block text-gray-300 mb-1">
+                <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
                   Message's preview
                 </label>
                 <div
-                  className="break-words overflow-hidden bg-white text-black rounded-lg min-h-[200px]"
+                  className="p-4 break-words overflow-hidden bg-white dark:bg-gray-700 text-black dark:text-white rounded-lg min-h-[200px]"
                   dangerouslySetInnerHTML={{ __html: messageHtml }}
                 />
               </div>

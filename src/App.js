@@ -34,7 +34,11 @@ function App() {
       <Navbar theme={theme} setTheme={setTheme} />
       <Suspense>
         <Routes>
-          <Route path="/" name="Landing page" element={<Home />} />
+          <Route
+            path="/"
+            name="Landing page"
+            element={<Home theme={theme} />}
+          />
           <Route path="/about" name="About page" element={<About />} />
         </Routes>
       </Suspense>

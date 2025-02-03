@@ -2,7 +2,7 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
 const InputHtmlEditor = (props) => {
-  const { htmlContent, setHtmlContent } = props || {};
+  const { htmlContent, setHtmlContent, theme } = props || {};
 
   const handleEditorChange = (newValue) => {
     setHtmlContent(newValue);
@@ -17,6 +17,8 @@ const InputHtmlEditor = (props) => {
         init={{
           height: 400,
           menubar: false,
+          skin: theme === "dark" ? "oxide-dark" : "oxide",
+          content_css: theme === "dark" ? "dark" : "default",
           plugins: [
             "anchor",
             "autolink",
