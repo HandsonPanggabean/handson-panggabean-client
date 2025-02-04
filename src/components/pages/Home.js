@@ -3,6 +3,9 @@ import React, { useState } from "react";
 // React router dom
 // import { useNavigate } from "react-router-dom";
 
+// Sweetalert
+import Swal from "sweetalert2";
+
 // Apis
 import { sendMessageToMyEmail } from "../../apis/email";
 
@@ -174,9 +177,41 @@ const Home = (props) => {
       };
 
       const response = await sendMessageToMyEmail(body);
-      // nanti buatkan notifikasi untuk email yang berhasil ke send
+      if (response && response.data && response.data.success) {
+        Swal.fire({
+          position: "center",
+          title: response.data.message,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 3000,
+          width: "90%",
+          customClass: {
+            popup:
+              "bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg w-full max-w-xs",
+            title: "text-lg font-semibold text-gray-800 dark:text-white",
+            content: "text-sm text-gray-600",
+            confirmButton:
+              "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg",
+          },
+        });
+      }
     } catch (err) {
-      console.log(err, "err");
+      Swal.fire({
+        position: "center",
+        text: err,
+        icon: "error",
+        showConfirmButton: false,
+        timer: 3000,
+        width: "90%",
+        customClass: {
+          popup:
+            "bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg w-full max-w-xs",
+          title: "text-lg font-semibold text-gray-800 dark:text-white",
+          content: "text-sm text-gray-600",
+          confirmButton:
+            "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg",
+        },
+      });
     } finally {
       setLoading(false);
     }

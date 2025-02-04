@@ -1,5 +1,6 @@
 function getServerURL() {
-  const localhost = "http://localhost:1997";
+  const localhost = process.env.REACT_APP_DEVELOPMENT_API;
+  const production = process.env.REACT_APP_PRODUCTION_API;
 
   let host = window.location.host;
   if (host) {
@@ -8,6 +9,9 @@ function getServerURL() {
 
   let env;
   switch (host) {
+    case "handson-panggabean-projects.firebaseapp.com":
+      env = production;
+      break;
     default:
       env = localhost;
   }
