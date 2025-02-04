@@ -11,61 +11,70 @@ import { sendMessageToMyEmail } from "../../apis/email";
 
 // Images & Icons
 import profile_picture_handson from "../../assets/images/profile_picture_handson.jpeg";
-import linked_in_logo from "../../assets/icons/linked_in_logo.avif";
-import instagram_logo from "../../assets/icons/instagram_logo.webp";
-import github_icon from "../../assets/icons/github_icon.png";
-import gmf_logo from "../../assets/icons/gmf_logo.jpg";
-import cloudxier_logo from "../../assets/icons/cloudxier_logo.png";
+import linked_in_logo from "../../assets/icons/brands/linked_in_logo.avif";
+import instagram_logo from "../../assets/icons/brands/instagram_logo.webp";
+import gmf_logo from "../../assets/icons/work_experiences/gmf_logo.jpg";
+import cloudxier_logo from "../../assets/icons/work_experiences/cloudxier_logo.png";
 
-import javascript_icon from "../../assets/icons/javascript_icon.png";
-import typescript_icon from "../../assets/icons/typescript_icon.png";
-import node_icon from "../../assets/icons/node_icon.png";
-import sequelize_icon from "../../assets/icons/sequelize_icon.png";
-import postgre_icon from "../../assets/icons/postgre_icon.png";
-import redis_icon from "../../assets/icons/redis_icon.png";
-import cookie_parser_icon from "../../assets/icons/cookie_parser_icon.png";
-import js_cookie_icon from "../../assets/icons/js_cookie_icon.png";
-import jest_icon from "../../assets/icons/jest_icon.png";
-import jwt_icon from "../../assets/icons/jwt_icon.png";
-import mongo_db_icon from "../../assets/icons/mongo_db_icon.png";
-import express_icon from "../../assets/icons/express_icon.png";
-import socket_io_icon from "../../assets/icons/socket_io_icon.png";
-import google_cloud_icon from "../../assets/icons/google_cloud_icon.png";
-import my_sql_icon from "../../assets/icons/my_sql_icon.png";
-import postman_icon from "../../assets/icons/postman_icon.png";
-import npm_icon from "../../assets/icons/npm_icon.png";
-import yarn_icon from "../../assets/icons/yarn_icon.png";
-import x_code_icon from "../../assets/icons/x_code_icon.png";
-import vue_icon from "../../assets/icons/vue_icon.png";
-import vuetify_icon from "../../assets/icons/vuetify_icon.png";
-import vite_icon from "../../assets/icons/vite_icon.png";
-import vs_code_icon from "../../assets/icons/vs_code_icon.png";
-import tailwind_icon from "../../assets/icons/tailwind_icon.png";
-import sass_icon from "../../assets/icons/sass_icon.png";
-import redux_icon from "../../assets/icons/redux_icon.png";
-import react_icon from "../../assets/icons/react_icon.png";
-import nodemon_icon from "../../assets/icons/nodemon_icon.png";
-import jira_icon from "../../assets/icons/jira_icon.png";
-import homebrow_icon from "../../assets/icons/homebrow_icon.png";
-import heroku_icon from "../../assets/icons/heroku_icon.png";
-import graphql_icon from "../../assets/icons/graphql_icon.png";
-import gitlab_icon from "../../assets/icons/gitlab_icon.png";
-import firebase_icon from "../../assets/icons/firebase_icon.png";
-import docker_icon from "../../assets/icons/docker_icon.png";
-import html_5_icon from "../../assets/icons/html_5_icon.png";
-import ccs_3_icon from "../../assets/icons/ccs_3_icon.png";
-import axios_icon from "../../assets/icons/axios_icon.png";
-import bootstrap_icon from "../../assets/icons/bootstrap_icon.png";
-import bcrypt_icon from "../../assets/icons/bcrypt_icon.jpg";
-import cors_icon from "../../assets/icons/cors_icon.png";
-import nodemailer_icon from "../../assets/icons/nodemailer_icon.svg";
-import responsive_web_design_icon from "../../assets/icons/responsive_web_design_icon.jpg";
-import restful_api_icon from "../../assets/icons/restful_api_icon.jpg";
-import airtable_icon from "../../assets/icons/airtable_icon.png";
-import android_studio_icon from "../../assets/icons/android_studio_icon.svg";
-import react_router_icon from "../../assets/icons/react_router_icon.svg";
-import vitest_icon from "../../assets/icons/vitest_icon.svg";
-import figma_icon from "../../assets/icons/figma_icon.webp";
+import github_icon_light from "../../assets/icons/skills/github_icon_light.svg";
+import github_icon_dark from "../../assets/icons/skills/github_icon_dark.svg";
+import vs_code_icon from "../../assets/icons/skills/vs_code_icon.svg";
+import bootstrap_icon_light from "../../assets/icons/skills/bootstrap_icon_light.svg";
+import bootstrap_icon_dark from "../../assets/icons/skills/bootstrap_icon_dark.svg";
+import nodemailer_icon from "../../assets/icons/skills/nodemailer_icon.svg";
+import airtable_icon from "../../assets/icons/skills/airtable_icon.svg";
+import vitest_icon from "../../assets/icons/skills/vitest_icon.svg";
+import figma_icon from "../../assets/icons/skills/figma_icon.svg";
+import railway_icon_light from "../../assets/icons/skills/railway_icon_light.svg";
+import railway_icon_dark from "../../assets/icons/skills/railway_icon_dark.svg";
+import javascript_icon from "../../assets/icons/skills/javascript_icon.svg";
+import typescript_icon from "../../assets/icons/skills/typescript_icon.svg";
+import node_icon from "../../assets/icons/skills/node_icon.svg";
+import postgre_icon from "../../assets/icons/skills/postgre_icon.svg";
+import redis_icon from "../../assets/icons/skills/redis_icon.svg";
+import jest_icon from "../../assets/icons/skills/jest_icon.svg";
+import mongo_db_icon from "../../assets/icons/skills/mongo_db_icon.svg";
+import google_cloud_icon from "../../assets/icons/skills/google_cloud_icon.svg";
+import my_sql_icon from "../../assets/icons/skills/my_sql_icon.svg";
+import postman_icon from "../../assets/icons/skills/postman_icon.svg";
+import npm_icon from "../../assets/icons/skills/npm_icon.svg";
+import vue_icon from "../../assets/icons/skills/vue_icon.svg";
+import vite_icon from "../../assets/icons/skills/vite_icon.svg";
+import tailwind_icon from "../../assets/icons/skills/tailwind_icon.svg";
+import sass_icon from "../../assets/icons/skills/sass_icon.svg";
+import redux_icon from "../../assets/icons/skills/redux_icon.svg";
+import react_icon from "../../assets/icons/skills/react_icon.svg";
+import jira_icon_light from "../../assets/icons/skills/jira_icon_light.svg";
+import jira_icon_dark from "../../assets/icons/skills/jira_icon_dark.svg";
+import homebrew_icon from "../../assets/icons/skills/homebrew_icon.svg";
+import heroku_icon_light from "../../assets/icons/skills/heroku_icon_light.svg";
+import heroku_icon_dark from "../../assets/icons/skills/heroku_icon_dark.svg";
+import graphql_icon from "../../assets/icons/skills/graphql_icon.svg";
+import gitlab_icon from "../../assets/icons/skills/gitlab_icon.svg";
+import firebase_icon from "../../assets/icons/skills/firebase_icon.svg";
+import docker_icon from "../../assets/icons/skills/docker_icon.svg";
+import html_5_icon from "../../assets/icons/skills/html_5_icon.svg";
+import css_3_icon from "../../assets/icons/skills/css_3_icon.svg";
+import react_router_icon_light from "../../assets/icons/skills/react_router_icon_light.svg";
+import react_router_icon_dark from "../../assets/icons/skills/react_router_icon_dark.svg";
+import sequelize_icon from "../../assets/icons/skills/sequelize_icon.svg";
+import express_icon from "../../assets/icons/skills/express_icon.svg";
+import socket_io_icon from "../../assets/icons/skills/socket_io_icon.svg";
+import yarn_icon from "../../assets/icons/skills/yarn_icon.svg";
+import x_code_icon from "../../assets/icons/skills/x_code_icon.svg";
+import vuetify_icon from "../../assets/icons/skills/vuetify_icon.svg";
+import nodemon_icon from "../../assets/icons/skills/nodemon_icon.svg";
+import axios_icon from "../../assets/icons/skills/axios_icon.svg";
+import android_studio_icon from "../../assets/icons/skills/android_studio_icon.svg";
+import pinia from "../../assets/icons/skills/pinia.svg";
+
+import cookie_parser_icon from "../../assets/icons/skills/cookie_parser_icon.png";
+import js_cookie_icon from "../../assets/icons/skills/js_cookie_icon.png";
+import jwt_icon from "../../assets/icons/skills/jwt_icon.png";
+import bcrypt_icon from "../../assets/icons/skills/bcrypt_icon.jpg";
+import cors_icon from "../../assets/icons/skills/cors_icon.png";
+import responsive_web_design_icon from "../../assets/icons/skills/responsive_web_design_icon.jpg";
+import restful_api_icon from "../../assets/icons/skills/restful_api_icon.jpg";
 
 // Components
 import InputHtmlEditor from "../inputs/InputHtmlEditor";
@@ -108,37 +117,61 @@ const Home = (props) => {
     { url: jest_icon, name: "Jest" },
     { url: restful_api_icon, name: "RESTful APIs" },
     { url: postman_icon, name: "Postman" },
-    { url: heroku_icon, name: "Heroku" },
+    {
+      url: theme && theme === "dark" ? railway_icon_dark : railway_icon_light,
+      name: "Railway",
+    },
+    {
+      url: theme && theme === "dark" ? heroku_icon_dark : heroku_icon_light,
+      name: "Heroku",
+    },
     { url: google_cloud_icon, name: "Google Cloud" },
     { url: socket_io_icon, name: "Socket IO" },
     { url: axios_icon, name: "Axios" },
     { url: npm_icon, name: "NPM" },
     { url: yarn_icon, name: "Yarn" },
     { url: html_5_icon, name: "HTML5" },
-    { url: ccs_3_icon, name: "CCS3" },
+    { url: css_3_icon, name: "CSS3" },
     { url: react_icon, name: "React" },
     { url: redux_icon, name: "Redux" },
-    { url: react_router_icon, name: "React Router" },
+    {
+      url:
+        theme && theme === "dark"
+          ? react_router_icon_dark
+          : react_router_icon_light,
+      name: "React Router",
+    },
     { url: react_icon, name: "React Native" },
     { url: vue_icon, name: "Vue" },
     { url: vuetify_icon, name: "Vuetify" },
     { url: vite_icon, name: "Vite" },
     { url: vitest_icon, name: "Vitest" },
+    { url: pinia, name: "Pinia" },
     { url: tailwind_icon, name: "Tailwind" },
-    { url: bootstrap_icon, name: "Bootstrap" },
+    {
+      url:
+        theme && theme === "dark" ? bootstrap_icon_dark : bootstrap_icon_light,
+      name: "Bootstrap",
+    },
     { url: sass_icon, name: "Sass" },
     { url: figma_icon, name: "Figma" },
     { url: js_cookie_icon, name: "js-cookie" },
     { url: responsive_web_design_icon, name: "Responsive Web Design" },
     { url: firebase_icon, name: "Firebase" },
-    { url: github_icon, name: "GitHub" },
+    {
+      url: theme && theme === "dark" ? github_icon_dark : github_icon_light,
+      name: "GitHub",
+    },
     { url: gitlab_icon, name: "GitLab" },
     { url: x_code_icon, name: "Xcode" },
     { url: android_studio_icon, name: "Android Studio" },
     { url: vs_code_icon, name: "Virtual Studio code" },
-    { url: jira_icon, name: "Jira" },
+    {
+      url: theme && theme === "dark" ? jira_icon_dark : jira_icon_light,
+      name: "Jira",
+    },
     { url: airtable_icon, name: "Airtable" },
-    { url: homebrow_icon, name: "Homebrew" },
+    { url: homebrew_icon, name: "Homebrew" },
   ];
 
   const experiences = [
@@ -256,7 +289,11 @@ const Home = (props) => {
                 }
               >
                 <img
-                  src={github_icon}
+                  src={
+                    theme && theme === "dark"
+                      ? github_icon_dark
+                      : github_icon_light
+                  }
                   alt="github_logo"
                   className="w-8 h-auto"
                 />
@@ -308,9 +345,7 @@ const Home = (props) => {
                 <div
                   className={
                     skill &&
-                    (skill.name === "Express" ||
-                      skill.name === "Socket IO" ||
-                      skill.name === "GitHub")
+                    (skill.name === "Express" || skill.name === "Socket IO")
                       ? "dark:bg-gray-700 rounded-lg"
                       : ""
                   }
@@ -320,9 +355,7 @@ const Home = (props) => {
                     alt={skill.name}
                     className={`w-20 h-auto rounded-lg ${
                       skill &&
-                      (skill.name === "Express" ||
-                        skill.name === "Socket IO" ||
-                        skill.name === "GitHub")
+                      (skill.name === "Express" || skill.name === "Socket IO")
                         ? "m-1"
                         : ""
                     }`}

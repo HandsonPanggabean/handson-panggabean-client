@@ -7,8 +7,8 @@ import { useNavigate } from "react-router-dom";
 import { FaSun, FaMoon } from "react-icons/fa";
 
 // Images & Icons
-import white_icon_H from "../assets/icons/white_icon_H.png";
-import black_icon_H from "../assets/icons/black_icon_H.png";
+import white_icon_H from "../assets/icons/brands/white_icon_H.png";
+import black_icon_H from "../assets/icons/brands/black_icon_H.png";
 
 const Navbar = ({ theme, setTheme }) => {
   const navigate = useNavigate();
