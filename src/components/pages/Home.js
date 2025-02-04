@@ -66,11 +66,13 @@ import figma_icon from "../../assets/icons/figma_icon.webp";
 
 // Components
 import InputHtmlEditor from "../inputs/InputHtmlEditor";
+import LoadingAnimation from "../LoadingAnimation";
 
 const Home = (props) => {
   const { theme } = props || {};
   // const navigate = useNavigate();
 
+  const [isLoading, setLoading] = useState(false);
   const [senderName, setSenderName] = useState("");
   const [senderEmail, setSenderEmail] = useState("");
   const [senderEmailSubject, setSenderEmailSubject] = useState("");
@@ -162,15 +164,22 @@ const Home = (props) => {
   ];
 
   const handleSendEmail = async () => {
-    const body = {
-      name: senderName,
-      email: senderEmail,
-      subject: senderEmailSubject,
-      message: messageHtml,
-    };
-    
-    const response = await sendMessageToMyEmail(body);
-    // nanti buatkan notifikasi untuk email yang berhasil ke send
+    try {
+      setLoading(true);
+      const body = {
+        name: senderName,
+        email: senderEmail,
+        subject: senderEmailSubject,
+        message: messageHtml,
+      };
+
+      const response = await sendMessageToMyEmail(body);
+      // nanti buatkan notifikasi untuk email yang berhasil ke send
+    } catch (err) {
+      console.log(err, "err");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -399,12 +408,12 @@ const Home = (props) => {
                 />
               </div>
               <div className="flex justify-end">
-                <button
+                <div
                   className="px-6 py-2 dark:bg-blue-600 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
                   onClick={() => handleSendEmail()}
                 >
-                  SEND
-                </button>
+                  {isLoading ? <LoadingAnimation /> : "Send"}
+                </div>
               </div>
             </div>
           </div>
