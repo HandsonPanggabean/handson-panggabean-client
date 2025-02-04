@@ -3,6 +3,9 @@ import React, { useState } from "react";
 // React router dom
 // import { useNavigate } from "react-router-dom";
 
+// Apis
+import { sendMessageToMyEmail } from "../../apis/email";
+
 // Images & Icons
 import profile_picture_handson from "../../assets/images/profile_picture_handson.jpeg";
 import linked_in_logo from "../../assets/icons/linked_in_logo.avif";
@@ -68,6 +71,9 @@ const Home = (props) => {
   const { theme } = props || {};
   // const navigate = useNavigate();
 
+  const [senderName, setSenderName] = useState("");
+  const [senderEmail, setSenderEmail] = useState("");
+  const [senderEmailSubject, setSenderEmailSubject] = useState("");
   const [messageHtml, setMessageHtml] = useState(
     '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Greetings! 😁</span></p>'
   );
@@ -154,6 +160,18 @@ const Home = (props) => {
       ],
     },
   ];
+
+  const handleSendEmail = async () => {
+    const body = {
+      name: senderName,
+      email: senderEmail,
+      subject: senderEmailSubject,
+      message: messageHtml,
+    };
+    
+    const response = await sendMessageToMyEmail(body);
+    // nanti buatkan notifikasi untuk email yang berhasil ke send
+  };
 
   return (
     <div className="bg-gray-200 dark:bg-gray-900 text-white py-5 md:py-20">
@@ -323,7 +341,7 @@ const Home = (props) => {
         </h2>
         <div className="flex justify-center items-center mt-10">
           <div className="w-full p-4 md:p-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg space-y-10">
-            <form className="space-y-4">
+            <div className="space-y-4">
               <div className="flex space-x-4">
                 <div className="w-1/2">
                   <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
@@ -332,6 +350,7 @@ const Home = (props) => {
                   <input
                     type="text"
                     className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
+                    onChange={({ target: { value } }) => setSenderName(value)}
                   />
                 </div>
                 <div className="w-1/2">
@@ -341,6 +360,7 @@ const Home = (props) => {
                   <input
                     type="email"
                     className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
+                    onChange={({ target: { value } }) => setSenderEmail(value)}
                   />
                 </div>
               </div>
@@ -352,6 +372,9 @@ const Home = (props) => {
                   <input
                     type="text"
                     className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
+                    onChange={({ target: { value } }) =>
+                      setSenderEmailSubject(value)
+                    }
                   />
                 </div>
               </div>
@@ -375,15 +398,15 @@ const Home = (props) => {
                   dangerouslySetInnerHTML={{ __html: messageHtml }}
                 />
               </div>
-              {/* <div className="flex justify-end">
+              <div className="flex justify-end">
                 <button
-                  type="submit"
                   className="px-6 py-2 dark:bg-blue-600 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                  onClick={() => handleSendEmail()}
                 >
                   SEND
                 </button>
-              </div> */}
-            </form>
+              </div>
+            </div>
           </div>
         </div>
       </div>
