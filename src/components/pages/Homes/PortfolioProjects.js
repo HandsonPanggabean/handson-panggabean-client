@@ -145,7 +145,7 @@ const PortfolioProjects = () => {
                       <div
                         className={`relative flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-lg transition-all duration-500 ${
                           index === activeIndex
-                            ? "w-[300px] h-[500px] md:w-[400px] md:h-[600px] scale-100 opacity-100 z-10 -ml-24 md:-ml-14" // Active image is fully visible
+                            ? "w-[315px] h-[500px] md:w-[400px] md:h-[600px] scale-100 opacity-100 z-10 -ml-24 md:-ml-14" // Active image is fully visible
                             : "w-[190px] h-[400px] md:w-[340px] md:h-[550px] scale-95 opacity-70 -translate-x-5 blur-sm z-0" // Inactive images look slightly behind
                         }`}
                       >
