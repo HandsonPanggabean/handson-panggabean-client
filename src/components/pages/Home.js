@@ -22,6 +22,7 @@ import InputHtmlEditor from "../inputs/InputHtmlEditor";
 import LoadingAnimation from "../LoadingAnimation";
 import Skills from "./Homes/Skills";
 import WorkExperiences from "./Homes/WorkExperiences";
+import PortfolioProjects from "./Homes/PortfolioProjects";
 
 const Home = (props) => {
   const { theme } = props || {};
@@ -172,6 +173,8 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+
+      <PortfolioProjects />
 
       <Skills theme={theme} />
 
