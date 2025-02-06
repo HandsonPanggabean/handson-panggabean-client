@@ -1,10 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 // React router dom
 // import { useNavigate } from "react-router-dom";
 
 // Sweetalert
 import Swal from "sweetalert2";
+
+// Helpers
+import { t } from "../../helpers/translator";
 
 // Apis
 import { sendMessageToMyEmail } from "../../apis/email";
@@ -26,6 +30,9 @@ import PortfolioProjects from "./Homes/PortfolioProjects";
 
 const Home = (props) => {
   const { theme } = props || {};
+
+  const lang = useSelector((state) => state.lang);
+
   // const navigate = useNavigate();
 
   const [isLoading, setLoading] = useState(false);
@@ -106,20 +113,16 @@ const Home = (props) => {
 
         <div className="md:w-3/5 text-center md:text-left mt-10 md:mt-0">
           <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
-            Hi, I'm{" "}
+            {t("landing_page_intro_1", lang)}{" "}
             <span className="text-blue-900 dark:text-blue-400">
-              Handson Panggabean
+              {t("full_name", lang)}
             </span>
           </h1>
           <h2 className="text-xl md:text-2xl font-semibold mt-2 text-black dark:text-white">
-            Fullstack Developer
+            {t("profession", lang)}
           </h2>
           <p className="text-black dark:text-gray-300 mt-4">
-            Experienced in building and maintaining both front-end and back-end
-            systems with knack for creating seamless user experiences.
-            Enthusiastic about problem-solving, delivering clean, maintainable
-            code, and collaborating within agile teams. Enjoy working with
-            modern technologies to drive innovative solutions.
+            {t("landing_page_description", lang)}
           </p>
           <div className="flex justify-center md:justify-start mt-6 gap-4">
             <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
@@ -174,15 +177,15 @@ const Home = (props) => {
         </div>
       </div>
 
-      <PortfolioProjects />
+      <PortfolioProjects lang={lang} t={t} />
 
-      <Skills theme={theme} />
+      <Skills theme={theme} lang={lang} t={t} />
 
-      <WorkExperiences />
+      <WorkExperiences lang={lang} t={t} />
 
       <div className="max-w-4xl mx-auto mt-28 p-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
-          Contact Me
+          {t("contact_me_title", lang)}
         </h2>
         <div className="flex justify-center items-center mt-10">
           <div className="w-full p-4 md:p-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg space-y-10">
@@ -190,7 +193,7 @@ const Home = (props) => {
               <div className="flex space-x-4">
                 <div className="w-1/2">
                   <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
-                    Name
+                    {t("contact_me_name_label", lang)}
                   </label>
                   <input
                     type="text"
@@ -200,7 +203,7 @@ const Home = (props) => {
                 </div>
                 <div className="w-1/2">
                   <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
-                    Email
+                    {t("contact_me_email_label", lang)}
                   </label>
                   <input
                     type="email"
@@ -212,7 +215,7 @@ const Home = (props) => {
               <div className="flex space-x-4">
                 <div className="w-full">
                   <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
-                    Subject
+                    {t("contact_me_subject_label", lang)}
                   </label>
                   <input
                     type="text"
@@ -225,7 +228,7 @@ const Home = (props) => {
               </div>
               <div>
                 <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
-                  Message
+                  {t("contact_me_message_label", lang)}
                 </label>
                 <InputHtmlEditor
                   key={theme}
@@ -236,7 +239,7 @@ const Home = (props) => {
               </div>
               <div>
                 <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
-                  Message's preview
+                  {t("contact_me_preview_message_label", lang)}
                 </label>
                 <div
                   className="p-4 break-words overflow-hidden bg-white dark:bg-gray-700 text-black dark:text-white rounded-lg min-h-[200px]"
@@ -245,10 +248,10 @@ const Home = (props) => {
               </div>
               <div className="flex justify-end">
                 <div
-                  className="px-6 py-2 dark:bg-blue-600 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
+                  className="px-6 py-2 dark:bg-blue-600 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
                   onClick={() => handleSendEmail()}
                 >
-                  {isLoading ? <LoadingAnimation /> : "Send"}
+                  {isLoading ? <LoadingAnimation /> : t("send", lang)}
                 </div>
               </div>
             </div>

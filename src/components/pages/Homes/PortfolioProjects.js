@@ -91,10 +91,11 @@ import ecommerce_42 from "../../../assets/images/portfolioProjects/ecommerce/eco
 import ecommerce_43 from "../../../assets/images/portfolioProjects/ecommerce/ecommerce_43.png";
 import ecommerce_44 from "../../../assets/images/portfolioProjects/ecommerce/ecommerce_44.png";
 
-const PortfolioProjects = () => {
+const PortfolioProjects = (props) => {
+  const { lang, t } = props || {};
   const [activeIndex, setActiveIndex] = useState({
     eDot: "eDot-0",
-    Ecommerce: "Ecommerce-0",
+    Maplexxon: "Maplexxon-0",
   });
 
   const smallScreen = useMediaQuery({ query: "(max-width: 500px)" });
@@ -102,7 +103,7 @@ const PortfolioProjects = () => {
   const portfolioProjects = [
     {
       name: "eDot",
-      description: "Mobile app schedule meeting & instant meeting",
+      description: t("edot_portfolio_project_description", lang),
       images: [
         { img_url: eDot_1 },
         { img_url: eDot_2 },
@@ -142,8 +143,8 @@ const PortfolioProjects = () => {
       ],
     },
     {
-      name: "Ecommerce",
-      description: "Website app ecommerce about fashion",
+      name: "Maplexxon",
+      description: t("ecommerce_portfolio_project_description", lang),
       images: [
         { img_url: ecommerce_1 },
         { img_url: ecommerce_2 },
@@ -202,7 +203,7 @@ const PortfolioProjects = () => {
     return (
       <div className="max-w-4xl mx-auto py-32">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-6">
-          Portfolio Projects
+          {t("portfolio_projects_title", lang)}
         </h2>
         {portfolioProjects.map((portfolioProject, index) => {
           const { name, description, images } = portfolioProject || {};
