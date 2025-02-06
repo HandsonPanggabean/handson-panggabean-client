@@ -91,11 +91,19 @@ import ecommerce_42 from "../../../assets/images/portfolioProjects/ecommerce/eco
 import ecommerce_43 from "../../../assets/images/portfolioProjects/ecommerce/ecommerce_43.png";
 import ecommerce_44 from "../../../assets/images/portfolioProjects/ecommerce/ecommerce_44.png";
 
+import X0PA_1 from "../../../assets/images/portfolioProjects/x0pa/X0PA_1.png";
+import X0PA_2 from "../../../assets/images/portfolioProjects/x0pa/X0PA_2.png";
+import X0PA_3 from "../../../assets/images/portfolioProjects/x0pa/X0PA_3.png";
+import X0PA_4 from "../../../assets/images/portfolioProjects/x0pa/X0PA_4.png";
+import X0PA_5 from "../../../assets/images/portfolioProjects/x0pa/X0PA_5.png";
+import X0PA_6 from "../../../assets/images/portfolioProjects/x0pa/X0PA_6.png";
+
 const PortfolioProjects = (props) => {
   const { lang, t } = props || {};
   const [activeIndex, setActiveIndex] = useState({
     eDot: "eDot-0",
     Maplexxon: "Maplexxon-0",
+    X0PA: "X0PA-0",
   });
 
   const smallScreen = useMediaQuery({ query: "(max-width: 500px)" });
@@ -193,6 +201,18 @@ const PortfolioProjects = (props) => {
         { img_url: ecommerce_44 },
       ],
     },
+    {
+      name: "X0PA",
+      description: t("x0pa_portfolio_project_description", lang),
+      images: [
+        { img_url: X0PA_1 },
+        { img_url: X0PA_2 },
+        { img_url: X0PA_3 },
+        { img_url: X0PA_4 },
+        { img_url: X0PA_5 },
+        { img_url: X0PA_6 },
+      ],
+    },
   ];
 
   if (
@@ -210,9 +230,9 @@ const PortfolioProjects = (props) => {
           return (
             <div
               key={index}
-              className="w-full flex flex-col justify-center bg-transparent p-4 pb-8"
+              className="w-full flex flex-col justify-center bg-transparent p-4 pb-20"
             >
-              <div className="mb-3">
+              <div className="mb-8">
                 <div className="text-3xl font-bold text-gray-900 dark:text-gray-200">
                   {name}
                 </div>
@@ -251,8 +271,20 @@ const PortfolioProjects = (props) => {
                       <div
                         className={`relative flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-lg transition-all duration-500 ${
                           `${name}-${idx}` === activeIndex[name]
-                            ? "w-[323px] h-[500px] md:w-[400px] md:h-[600px] scale-100 opacity-100 z-10 -ml-24 md:-ml-14" // Active image is fully visible
-                            : "w-[190px] h-[400px] md:w-[340px] md:h-[550px] scale-95 opacity-70 -translate-x-5 blur-sm z-0" // Inactive images look slightly behind
+                            ? `w-[323px] ${
+                                name === "X0PA" ? "h-[250px]" : "h-[500px]"
+                              } md:w-[400px] ${
+                                name === "X0PA"
+                                  ? "md:h-[300px]"
+                                  : "md:h-[600px]"
+                              } scale-100 opacity-100 z-10 -ml-24 md:-ml-14` // Active image is fully visible
+                            : `w-[190px] ${
+                                name === "X0PA" ? "h-[225px]" : "h-[400px]"
+                              } md:w-[340px] ${
+                                name === "X0PA"
+                                  ? "md:h-[250px]"
+                                  : "md:h-[550px]"
+                              } scale-95 opacity-70 -translate-x-5 blur-sm z-0` // Inactive images look slightly behind
                         }`}
                       >
                         <img
