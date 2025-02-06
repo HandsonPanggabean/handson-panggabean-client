@@ -68,7 +68,8 @@ import bcrypt_icon from "../../../assets/icons/skills/bcrypt_icon.jpg";
 import cors_icon from "../../../assets/icons/skills/cors_icon.png";
 
 const Skills = (props) => {
-  const { theme } = props || {};
+  const { theme, lang, t } = props || {};
+
   const skills = [
     { url: javascript_icon, name: "Javascript" },
     { url: typescript_icon, name: "Typescript" },
@@ -174,7 +175,7 @@ const Skills = (props) => {
     return (
       <div className="max-w-4xl mx-auto py-32">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
-          Tech Stacks
+          {t("tech_stacks_title", lang)}
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-10 mt-10 px-4">
           {/* <div className="mt-10 space-y-10 px-4 flex items-center justify-center gap-6"> */}

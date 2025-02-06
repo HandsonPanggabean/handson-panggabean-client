@@ -4,28 +4,30 @@ import React from "react";
 import gmf_logo from "../../../assets/icons/work_experiences/gmf_logo.jpg";
 import cloudxier_logo from "../../../assets/icons/work_experiences/cloudxier_logo.png";
 
-const WorkExperiences = () => {
+const WorkExperiences = (props) => {
+  const { lang, t } = props || {};
+
   const workExperiences = [
     {
       company: "PT GMF AeroAsia Tbk",
       logo: gmf_logo,
       position: "Senior Aircraft Maintenance Technician",
-      period: "Dec 2018 - May 2021",
+      period: t("work_experiences_gmf_date", lang),
       descriptions: [
-        "Performed scheduled and unscheduled inspections to check flight readiness of aircraft.",
-        "Maintained repair logs to document all corrective and preventive aircraft maintenance.",
-        "Inspected all received aircraft parts to verify compliance with EASA & FAA regulations.",
+        t("work_experiences_gmf_desc_1", lang),
+        t("work_experiences_gmf_desc_2", lang),
+        t("work_experiences_gmf_desc_3", lang),
       ],
     },
     {
       company: "Cloudxier",
       logo: cloudxier_logo,
       position: "Fullstack Developer",
-      period: "Nov 2021 - Present",
+      period: t("work_experiences_cloudxier_date", lang),
       descriptions: [
-        "Developed and maintained full-stack web applications using JavaScript, React, and Node.js, enhancing user experience and functionality.",
-        "Implemented responsive web design principles to create mobile-friendly applications, increasing accessibility for users on various devices.",
-        "Designed and implemented RESTful APIs, enabling effective communication between front-end and back-end systems.",
+        t("work_experiences_cloudxier_desc_1", lang),
+        t("work_experiences_cloudxier_desc_2", lang),
+        t("work_experiences_cloudxier_desc_3", lang),
       ],
     },
   ];
@@ -37,7 +39,7 @@ const WorkExperiences = () => {
     return (
       <div className="max-w-4xl mx-auto py-10">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
-          Work Experiences
+          {t("work_experiences_title", lang)}
         </h2>
         <div className="mt-10 space-y-10 px-4">
           {workExperiences.map((exp, index) => (

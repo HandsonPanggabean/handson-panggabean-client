@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // React router dom
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,10 @@ import black_icon_H from "../assets/icons/brands/black_icon_H.png";
 
 const Navbar = ({ theme, setTheme }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const lang = useSelector((state) => state.lang);
+
+  console.log(lang, "lang <<");
 
   return (
     <nav className="sticky top-0 bg-white border-gray-200 dark:bg-black z-10">
@@ -30,6 +35,27 @@ const Navbar = ({ theme, setTheme }) => {
           </span> */}
         </div>
         <div className="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
+          <label className="inline-flex items-center cursor-pointer mr-5">
+            <span className="text-xl font-bold text-gray-900 dark:text-gray-300 mr-1">
+              EN
+            </span>
+
+            <input type="checkbox" value="" className="sr-only peer" />
+
+            <div
+              onClick={() =>
+                dispatch({
+                  type: "SET_LANGUAGE",
+                  lang: lang === "en" ? "id" : "en",
+                })
+              }
+              className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 bg-blue-900 dark:bg-blue-500"
+            />
+
+            <span className="text-xl font-bold text-gray-900 dark:text-gray-300 ml-1">
+              ID
+            </span>
+          </label>
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
