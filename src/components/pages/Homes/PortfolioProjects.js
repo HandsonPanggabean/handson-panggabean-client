@@ -92,7 +92,10 @@ import ecommerce_43 from "../../../assets/images/portfolioProjects/ecommerce/eco
 import ecommerce_44 from "../../../assets/images/portfolioProjects/ecommerce/ecommerce_44.png";
 
 const PortfolioProjects = () => {
-  const [activeIndex, setActiveIndex] = useState("");
+  const [activeIndex, setActiveIndex] = useState({
+    eDot: "eDot-0",
+    Ecommerce: "Ecommerce-0",
+  });
 
   const smallScreen = useMediaQuery({ query: "(max-width: 500px)" });
 
@@ -190,6 +193,7 @@ const PortfolioProjects = () => {
       ],
     },
   ];
+
   if (
     portfolioProjects &&
     Array.isArray(portfolioProjects) &&
@@ -232,7 +236,10 @@ const PortfolioProjects = () => {
                   modules={[EffectCoverflow, Pagination]}
                   className="w-full"
                   onSlideChange={(swiper) =>
-                    setActiveIndex(`${name}-${swiper.activeIndex}`)
+                    setActiveIndex({
+                      ...activeIndex,
+                      [name]: `${name}-${swiper.activeIndex}`,
+                    })
                   }
                 >
                   {images.map((image, idx) => (
@@ -242,7 +249,7 @@ const PortfolioProjects = () => {
                     >
                       <div
                         className={`relative flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-lg transition-all duration-500 ${
-                          `${name}-${idx}` === activeIndex
+                          `${name}-${idx}` === activeIndex[name]
                             ? "w-[323px] h-[500px] md:w-[400px] md:h-[600px] scale-100 opacity-100 z-10 -ml-24 md:-ml-14" // Active image is fully visible
                             : "w-[190px] h-[400px] md:w-[340px] md:h-[550px] scale-95 opacity-70 -translate-x-5 blur-sm z-0" // Inactive images look slightly behind
                         }`}
