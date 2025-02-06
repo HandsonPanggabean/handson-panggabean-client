@@ -16,8 +16,6 @@ const Navbar = ({ theme, setTheme }) => {
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.lang);
 
-  console.log(lang, "lang <<");
-
   return (
     <nav className="sticky top-0 bg-white border-gray-200 dark:bg-black z-10">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
