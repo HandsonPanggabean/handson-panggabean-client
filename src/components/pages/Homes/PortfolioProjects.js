@@ -98,12 +98,28 @@ import X0PA_4 from "../../../assets/images/portfolioProjects/x0pa/X0PA_4.png";
 import X0PA_5 from "../../../assets/images/portfolioProjects/x0pa/X0PA_5.png";
 import X0PA_6 from "../../../assets/images/portfolioProjects/x0pa/X0PA_6.png";
 
+import ccs_1 from "../../../assets/images/portfolioProjects/ccs/ccs_1.png";
+import ccs_2 from "../../../assets/images/portfolioProjects/ccs/ccs_2.png";
+import ccs_3 from "../../../assets/images/portfolioProjects/ccs/ccs_3.png";
+import ccs_4 from "../../../assets/images/portfolioProjects/ccs/ccs_4.png";
+import ccs_5 from "../../../assets/images/portfolioProjects/ccs/ccs_5.png";
+import ccs_6 from "../../../assets/images/portfolioProjects/ccs/ccs_6.png";
+import ccs_7 from "../../../assets/images/portfolioProjects/ccs/ccs_7.png";
+import ccs_8 from "../../../assets/images/portfolioProjects/ccs/ccs_8.png";
+import ccs_9 from "../../../assets/images/portfolioProjects/ccs/ccs_9.png";
+import ccs_10 from "../../../assets/images/portfolioProjects/ccs/ccs_10.png";
+import ccs_11 from "../../../assets/images/portfolioProjects/ccs/ccs_11.png";
+import ccs_12 from "../../../assets/images/portfolioProjects/ccs/ccs_12.png";
+import ccs_13 from "../../../assets/images/portfolioProjects/ccs/ccs_13.png";
+import ccs_14 from "../../../assets/images/portfolioProjects/ccs/ccs_14.png";
+
 const PortfolioProjects = (props) => {
   const { lang, t } = props || {};
   const [activeIndex, setActiveIndex] = useState({
     eDot: "eDot-0",
     Maplexxon: "Maplexxon-0",
     X0PA: "X0PA-0",
+    ccs: "ccs-0",
   });
 
   const smallScreen = useMediaQuery({ query: "(max-width: 500px)" });
@@ -118,7 +134,6 @@ const PortfolioProjects = (props) => {
         { img_url: eDot_3 },
         { img_url: eDot_4 },
         { img_url: eDot_5 },
-        { img_url: eDot_6 },
         { img_url: eDot_6 },
         { img_url: eDot_7 },
         { img_url: eDot_8 },
@@ -159,7 +174,6 @@ const PortfolioProjects = (props) => {
         { img_url: ecommerce_3 },
         { img_url: ecommerce_4 },
         { img_url: ecommerce_5 },
-        { img_url: ecommerce_6 },
         { img_url: ecommerce_6 },
         { img_url: ecommerce_7 },
         { img_url: ecommerce_8 },
@@ -213,6 +227,26 @@ const PortfolioProjects = (props) => {
         { img_url: X0PA_6 },
       ],
     },
+    {
+      name: "ccs",
+      description: t("ccs_portfolio_project_description", lang),
+      images: [
+        { img_url: ccs_1 },
+        { img_url: ccs_2 },
+        { img_url: ccs_3 },
+        { img_url: ccs_4 },
+        { img_url: ccs_5 },
+        { img_url: ccs_6 },
+        { img_url: ccs_7 },
+        { img_url: ccs_8 },
+        { img_url: ccs_9 },
+        { img_url: ccs_10 },
+        { img_url: ccs_11 },
+        { img_url: ccs_12 },
+        { img_url: ccs_13 },
+        { img_url: ccs_14 },
+      ],
+    },
   ];
 
   if (
@@ -234,7 +268,9 @@ const PortfolioProjects = (props) => {
             >
               <div className="mb-8">
                 <div className="text-3xl font-bold text-gray-900 dark:text-gray-200">
-                  {name}
+                  {name && name === "ccs"
+                    ? "Combined Clinics Sustainability"
+                    : name}
                 </div>
                 <div className="text-sm md:text-lg mt-2 text-gray-800 dark:text-gray-300">
                   {description}
