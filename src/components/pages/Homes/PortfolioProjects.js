@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 // Image swiper
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 
 // react-responsive
 import { useMediaQuery } from "react-responsive";
@@ -115,139 +115,206 @@ import ccs_14 from "../../../assets/images/portfolioProjects/ccs/ccs_14.png";
 
 const PortfolioProjects = (props) => {
   const { lang, t } = props || {};
-  const [activeIndex, setActiveIndex] = useState({
-    eDot: "eDot-0",
-    Maplexxon: "Maplexxon-0",
-    X0PA: "X0PA-0",
-    ccs: "ccs-0",
-  });
 
   const smallScreen = useMediaQuery({ query: "(max-width: 500px)" });
 
-  const portfolioProjects = [
+  const [portfolioProjects, setPortfolioProjects] = useState([
     {
       name: "eDot",
       description: t("edot_portfolio_project_description", lang),
+      autoplayEnabled: false,
       images: [
-        { img_url: eDot_1 },
-        { img_url: eDot_2 },
-        { img_url: eDot_3 },
-        { img_url: eDot_4 },
-        { img_url: eDot_5 },
-        { img_url: eDot_6 },
-        { img_url: eDot_7 },
-        { img_url: eDot_8 },
-        { img_url: eDot_9 },
-        { img_url: eDot_10 },
-        { img_url: eDot_11 },
-        { img_url: eDot_12 },
-        { img_url: eDot_13 },
-        { img_url: eDot_14 },
-        { img_url: eDot_15 },
-        { img_url: eDot_16 },
-        { img_url: eDot_17 },
-        { img_url: eDot_18 },
-        { img_url: eDot_19 },
-        { img_url: eDot_20 },
-        { img_url: eDot_21 },
-        { img_url: eDot_22 },
-        { img_url: eDot_23 },
-        { img_url: eDot_24 },
-        { img_url: eDot_25 },
-        { img_url: eDot_26 },
-        { img_url: eDot_27 },
-        { img_url: eDot_28 },
-        { img_url: eDot_29 },
-        { img_url: eDot_30 },
-        { img_url: eDot_31 },
-        { img_url: eDot_32 },
-        { img_url: eDot_33 },
-        { img_url: eDot_34 },
+        { img_url: eDot_1, activeIndex: true },
+        { img_url: eDot_2, activeIndex: false },
+        { img_url: eDot_3, activeIndex: false },
+        { img_url: eDot_4, activeIndex: false },
+        { img_url: eDot_5, activeIndex: false },
+        { img_url: eDot_6, activeIndex: false },
+        { img_url: eDot_7, activeIndex: false },
+        { img_url: eDot_8, activeIndex: false },
+        { img_url: eDot_9, activeIndex: false },
+        { img_url: eDot_10, activeIndex: false },
+        { img_url: eDot_11, activeIndex: false },
+        { img_url: eDot_12, activeIndex: false },
+        { img_url: eDot_13, activeIndex: false },
+        { img_url: eDot_14, activeIndex: false },
+        { img_url: eDot_15, activeIndex: false },
+        { img_url: eDot_16, activeIndex: false },
+        { img_url: eDot_17, activeIndex: false },
+        { img_url: eDot_18, activeIndex: false },
+        { img_url: eDot_19, activeIndex: false },
+        { img_url: eDot_20, activeIndex: false },
+        { img_url: eDot_21, activeIndex: false },
+        { img_url: eDot_22, activeIndex: false },
+        { img_url: eDot_23, activeIndex: false },
+        { img_url: eDot_24, activeIndex: false },
+        { img_url: eDot_25, activeIndex: false },
+        { img_url: eDot_26, activeIndex: false },
+        { img_url: eDot_27, activeIndex: false },
+        { img_url: eDot_28, activeIndex: false },
+        { img_url: eDot_29, activeIndex: false },
+        { img_url: eDot_30, activeIndex: false },
+        { img_url: eDot_31, activeIndex: false },
+        { img_url: eDot_32, activeIndex: false },
+        { img_url: eDot_33, activeIndex: false },
+        { img_url: eDot_34, activeIndex: false },
       ],
     },
     {
       name: "Maplexxon",
       description: t("ecommerce_portfolio_project_description", lang),
+      autoplayEnabled: false,
       images: [
-        { img_url: ecommerce_1 },
-        { img_url: ecommerce_2 },
-        { img_url: ecommerce_3 },
-        { img_url: ecommerce_4 },
-        { img_url: ecommerce_5 },
-        { img_url: ecommerce_6 },
-        { img_url: ecommerce_7 },
-        { img_url: ecommerce_8 },
-        { img_url: ecommerce_9 },
-        { img_url: ecommerce_10 },
-        { img_url: ecommerce_11 },
-        { img_url: ecommerce_12 },
-        { img_url: ecommerce_13 },
-        { img_url: ecommerce_14 },
-        { img_url: ecommerce_15 },
-        { img_url: ecommerce_16 },
-        { img_url: ecommerce_17 },
-        { img_url: ecommerce_18 },
-        { img_url: ecommerce_19 },
-        { img_url: ecommerce_20 },
-        { img_url: ecommerce_21 },
-        { img_url: ecommerce_22 },
-        { img_url: ecommerce_23 },
-        { img_url: ecommerce_24 },
-        { img_url: ecommerce_25 },
-        { img_url: ecommerce_26 },
-        { img_url: ecommerce_27 },
-        { img_url: ecommerce_28 },
-        { img_url: ecommerce_29 },
-        { img_url: ecommerce_30 },
-        { img_url: ecommerce_31 },
-        { img_url: ecommerce_32 },
-        { img_url: ecommerce_33 },
-        { img_url: ecommerce_34 },
-        { img_url: ecommerce_35 },
-        { img_url: ecommerce_36 },
-        { img_url: ecommerce_37 },
-        { img_url: ecommerce_38 },
-        { img_url: ecommerce_39 },
-        { img_url: ecommerce_40 },
-        { img_url: ecommerce_41 },
-        { img_url: ecommerce_42 },
-        { img_url: ecommerce_43 },
-        { img_url: ecommerce_44 },
+        { img_url: ecommerce_1, activeIndex: true },
+        { img_url: ecommerce_2, activeIndex: false },
+        { img_url: ecommerce_3, activeIndex: false },
+        { img_url: ecommerce_4, activeIndex: false },
+        { img_url: ecommerce_5, activeIndex: false },
+        { img_url: ecommerce_6, activeIndex: false },
+        { img_url: ecommerce_7, activeIndex: false },
+        { img_url: ecommerce_8, activeIndex: false },
+        { img_url: ecommerce_9, activeIndex: false },
+        { img_url: ecommerce_10, activeIndex: false },
+        { img_url: ecommerce_11, activeIndex: false },
+        { img_url: ecommerce_12, activeIndex: false },
+        { img_url: ecommerce_13, activeIndex: false },
+        { img_url: ecommerce_14, activeIndex: false },
+        { img_url: ecommerce_15, activeIndex: false },
+        { img_url: ecommerce_16, activeIndex: false },
+        { img_url: ecommerce_17, activeIndex: false },
+        { img_url: ecommerce_18, activeIndex: false },
+        { img_url: ecommerce_19, activeIndex: false },
+        { img_url: ecommerce_20, activeIndex: false },
+        { img_url: ecommerce_21, activeIndex: false },
+        { img_url: ecommerce_22, activeIndex: false },
+        { img_url: ecommerce_23, activeIndex: false },
+        { img_url: ecommerce_24, activeIndex: false },
+        { img_url: ecommerce_25, activeIndex: false },
+        { img_url: ecommerce_26, activeIndex: false },
+        { img_url: ecommerce_27, activeIndex: false },
+        { img_url: ecommerce_28, activeIndex: false },
+        { img_url: ecommerce_29, activeIndex: false },
+        { img_url: ecommerce_30, activeIndex: false },
+        { img_url: ecommerce_31, activeIndex: false },
+        { img_url: ecommerce_32, activeIndex: false },
+        { img_url: ecommerce_33, activeIndex: false },
+        { img_url: ecommerce_34, activeIndex: false },
+        { img_url: ecommerce_35, activeIndex: false },
+        { img_url: ecommerce_36, activeIndex: false },
+        { img_url: ecommerce_37, activeIndex: false },
+        { img_url: ecommerce_38, activeIndex: false },
+        { img_url: ecommerce_39, activeIndex: false },
+        { img_url: ecommerce_40, activeIndex: false },
+        { img_url: ecommerce_41, activeIndex: false },
+        { img_url: ecommerce_42, activeIndex: false },
+        { img_url: ecommerce_43, activeIndex: false },
+        { img_url: ecommerce_44, activeIndex: false },
       ],
     },
     {
       name: "X0PA",
       description: t("x0pa_portfolio_project_description", lang),
+      autoplayEnabled: false,
       images: [
-        { img_url: X0PA_1 },
-        { img_url: X0PA_2 },
-        { img_url: X0PA_3 },
-        { img_url: X0PA_4 },
-        { img_url: X0PA_5 },
-        { img_url: X0PA_6 },
+        { img_url: X0PA_1, activeIndex: true },
+        { img_url: X0PA_2, activeIndex: false },
+        { img_url: X0PA_3, activeIndex: false },
+        { img_url: X0PA_4, activeIndex: false },
+        { img_url: X0PA_5, activeIndex: false },
+        { img_url: X0PA_6, activeIndex: false },
       ],
     },
     {
       name: "ccs",
       description: t("ccs_portfolio_project_description", lang),
+      autoplayEnabled: false,
       images: [
-        { img_url: ccs_1 },
-        { img_url: ccs_2 },
-        { img_url: ccs_3 },
-        { img_url: ccs_4 },
-        { img_url: ccs_5 },
-        { img_url: ccs_6 },
-        { img_url: ccs_7 },
-        { img_url: ccs_8 },
-        { img_url: ccs_9 },
-        { img_url: ccs_10 },
-        { img_url: ccs_11 },
-        { img_url: ccs_12 },
-        { img_url: ccs_13 },
-        { img_url: ccs_14 },
+        { img_url: ccs_1, activeIndex: true },
+        { img_url: ccs_2, activeIndex: false },
+        { img_url: ccs_3, activeIndex: false },
+        { img_url: ccs_4, activeIndex: false },
+        { img_url: ccs_5, activeIndex: false },
+        { img_url: ccs_6, activeIndex: false },
+        { img_url: ccs_7, activeIndex: false },
+        { img_url: ccs_8, activeIndex: false },
+        { img_url: ccs_9, activeIndex: false },
+        { img_url: ccs_10, activeIndex: false },
+        { img_url: ccs_11, activeIndex: false },
+        { img_url: ccs_12, activeIndex: false },
+        { img_url: ccs_13, activeIndex: false },
+        { img_url: ccs_14, activeIndex: false },
       ],
     },
-  ];
+  ]);
+
+  const handleOnSlideChange = (name, swiper) => {
+    let finalPortfolioProjects = portfolioProjects;
+    finalPortfolioProjects = finalPortfolioProjects.map((portfolio) => {
+      if (name === portfolio.name) {
+        let finalImages = portfolio.images;
+        finalImages = finalImages.map((image, idx) => {
+          if (swiper.activeIndex === idx) {
+            image.activeIndex = true;
+          } else {
+            image.activeIndex = false;
+          }
+          return image;
+        });
+        portfolio.images = finalImages;
+      }
+      return portfolio;
+    });
+    setPortfolioProjects(finalPortfolioProjects);
+  };
+
+  const swiperRefs = useRef({});
+
+  const handleAutoPlaySlide = (name) => {
+    const updatedProjects = portfolioProjects.map((portfolio) => {
+      if (portfolio.name === name) {
+        const newAutoplayState = !portfolio.autoplayEnabled;
+
+        // Start or stop autoplay directly via Swiper instance
+        if (swiperRefs.current[name]) {
+          if (newAutoplayState) {
+            swiperRefs.current[name].autoplay.start(); // Start autoplay
+          } else {
+            swiperRefs.current[name].autoplay.stop(); // Stop autoplay
+          }
+        }
+
+        return { ...portfolio, autoplayEnabled: newAutoplayState };
+      }
+      return portfolio;
+    });
+
+    setPortfolioProjects(updatedProjects);
+  };
+
+  const handleChangeDescriptionForEachProject = (lang) => {
+    const updatedProjects = portfolioProjects.map((portfolio) => {
+      portfolio.description = t(
+        `${
+          portfolio.name === "eDot"
+            ? "edot"
+            : portfolio.name === "X0PA"
+            ? "x0pa"
+            : portfolio.name === "Maplexxon"
+            ? "ecommerce"
+            : "ccs"
+        }_portfolio_project_description`,
+        lang
+      );
+
+      return portfolio;
+    });
+
+    setPortfolioProjects(updatedProjects);
+  };
+
+  useEffect(() => {
+    handleChangeDescriptionForEachProject(lang); // eslint-disable-next-line
+  }, [lang]);
 
   if (
     portfolioProjects &&
@@ -260,17 +327,69 @@ const PortfolioProjects = (props) => {
           {t("portfolio_projects_title", lang)}
         </h2>
         {portfolioProjects.map((portfolioProject, index) => {
-          const { name, description, images } = portfolioProject || {};
+          const { name, description, images, autoplayEnabled } =
+            portfolioProject || {};
+
           return (
             <div
               key={index}
               className="w-full flex flex-col justify-center bg-transparent p-4 pb-20"
             >
               <div className="mb-8">
-                <div className="text-3xl font-bold text-gray-900 dark:text-gray-200">
-                  {name && name === "ccs"
-                    ? "Combined Clinics Sustainability"
-                    : name}
+                <div className="flex gap-4 items-center justify-center">
+                  <div className="text-3xl font-bold text-gray-900 dark:text-gray-200">
+                    {name && name === "ccs"
+                      ? "Combined Clinics Sustainability"
+                      : name}
+                  </div>
+                  <div
+                    onClick={() => handleAutoPlaySlide(name)}
+                    className="w-8 h-8 flex items-center justify-center rounded-full relative shadow-lg focus:outline-none cursor-pointer"
+                  >
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                      {autoplayEnabled ? (
+                        <div className="focus:outline-none">
+                          <svg
+                            className="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            ></path>
+                          </svg>
+                        </div>
+                      ) : (
+                        <div className="focus:outline-none">
+                          <svg
+                            className="w-8 h-8"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+                            ></path>
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            ></path>
+                          </svg>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                 </div>
                 <div className="text-sm md:text-lg mt-2 text-gray-800 dark:text-gray-300">
                   {description}
@@ -278,6 +397,8 @@ const PortfolioProjects = (props) => {
               </div>
               {images && Array.isArray(images) && images.length > 0 ? (
                 <Swiper
+                  onSwiper={(swiper) => (swiperRefs.current[name] = swiper)}
+                  modules={[EffectCoverflow, Pagination, Autoplay]}
                   effect={"coverflow"}
                   grabCursor={true}
                   centeredSlides={true}
@@ -290,14 +411,14 @@ const PortfolioProjects = (props) => {
                     slideShadows: false,
                   }}
                   pagination={false}
-                  modules={[EffectCoverflow, Pagination]}
                   className="w-full"
-                  onSlideChange={(swiper) =>
-                    setActiveIndex({
-                      ...activeIndex,
-                      [name]: `${name}-${swiper.activeIndex}`,
-                    })
+                  onSlideChange={(swiper) => handleOnSlideChange(name, swiper)}
+                  autoplay={
+                    autoplayEnabled
+                      ? { delay: 3000, disableOnInteraction: false }
+                      : false
                   }
+                  loop={false}
                 >
                   {images.map((image, idx) => (
                     <SwiperSlide
@@ -306,7 +427,7 @@ const PortfolioProjects = (props) => {
                     >
                       <div
                         className={`relative flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-lg transition-all duration-500 ${
-                          `${name}-${idx}` === activeIndex[name]
+                          image.activeIndex
                             ? `w-[323px] ${
                                 name === "X0PA" ? "h-[250px]" : "h-[500px]"
                               } md:w-[400px] ${
