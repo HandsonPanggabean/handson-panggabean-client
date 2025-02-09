@@ -10,6 +10,9 @@ import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 // react-responsive
 import { useMediaQuery } from "react-responsive";
 
+// react lucide
+import { Maximize2 } from "lucide-react";
+
 // Images
 import eDot_1 from "../../../assets/images/portfolioProjects/eDot/eDot_1.png";
 import eDot_2 from "../../../assets/images/portfolioProjects/eDot/eDot_2.png";
@@ -112,6 +115,9 @@ import ccs_11 from "../../../assets/images/portfolioProjects/ccs/ccs_11.png";
 import ccs_12 from "../../../assets/images/portfolioProjects/ccs/ccs_12.png";
 import ccs_13 from "../../../assets/images/portfolioProjects/ccs/ccs_13.png";
 import ccs_14 from "../../../assets/images/portfolioProjects/ccs/ccs_14.png";
+
+// Components
+import FullscreenImageViewer from "../../FullscreenImageViewer"; // Import the component
 
 const PortfolioProjects = (props) => {
   const { lang, t } = props || {};
@@ -312,6 +318,31 @@ const PortfolioProjects = (props) => {
     setPortfolioProjects(updatedProjects);
   };
 
+  const [fullscreenImages, setFullscreenImages] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const openFullscreen = (images, index) => {
+    setFullscreenImages(images);
+    setCurrentImageIndex(index);
+  };
+
+  const closeFullscreen = () => {
+    setFullscreenImages(null);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === fullscreenImages.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? fullscreenImages.length - 1 : prevIndex - 1
+    );
+  };
+
   useEffect(() => {
     handleChangeDescriptionForEachProject(lang); // eslint-disable-next-line
   }, [lang]);
@@ -449,6 +480,16 @@ const PortfolioProjects = (props) => {
                           alt={`slide-${name}-${idx}`}
                           className="w-full h-full object-contain rounded-lg"
                         />
+                        {image.activeIndex ? (
+                          <div
+                            onClick={() =>
+                              openFullscreen(portfolioProject.images, idx)
+                            }
+                            className="absolute top-2 right-2 bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-80 transition cursor-pointer"
+                          >
+                            <Maximize2 className="w-5 h-5 text-white" />
+                          </div>
+                        ) : null}
                       </div>
                     </SwiperSlide>
                   ))}
@@ -457,6 +498,15 @@ const PortfolioProjects = (props) => {
             </div>
           );
         })}
+        {fullscreenImages && (
+          <FullscreenImageViewer
+            images={fullscreenImages}
+            currentIndex={currentImageIndex}
+            onClose={closeFullscreen}
+            onNext={nextImage}
+            onPrev={prevImage}
+          />
+        )}
       </div>
     );
   } else {
