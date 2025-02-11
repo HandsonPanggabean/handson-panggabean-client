@@ -27,6 +27,7 @@ import LoadingAnimation from "../LoadingAnimation";
 import Skills from "./Homes/Skills";
 import WorkExperiences from "./Homes/WorkExperiences";
 import PortfolioProjects from "./Homes/PortfolioProjects";
+import Chat from "../Chat";
 
 const Home = (props) => {
   const { theme } = props || {};
@@ -258,6 +259,8 @@ const Home = (props) => {
           </div>
         </div>
       </div>
+
+      <Chat />
     </div>
   );
 };
