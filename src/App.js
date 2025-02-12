@@ -9,8 +9,11 @@ import "./App.css";
 // Pages
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+
+// Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import AIChat from "./components/AIAssistans/AIChat";
 
 function App() {
   const [theme, setTheme] = useState(
@@ -42,6 +45,7 @@ function App() {
           <Route path="/about" name="About page" element={<About />} />
         </Routes>
       </Suspense>
+      <AIChat />
       <Footer />
     </div>
   );

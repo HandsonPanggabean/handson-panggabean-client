@@ -248,8 +248,10 @@ const Home = (props) => {
               </div>
               <div className="flex justify-end">
                 <div
-                  className="px-6 py-2 dark:bg-blue-600 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500"
-                  onClick={() => handleSendEmail()}
+                  className={`px-6 py-2 dark:bg-blue-600 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500 cursor-${
+                    isLoading ? "not-allowed" : "pointer"
+                  } `}
+                  onClick={() => (!isLoading ? handleSendEmail() : null)}
                 >
                   {isLoading ? <LoadingAnimation /> : t("send", lang)}
                 </div>
