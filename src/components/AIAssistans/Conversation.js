@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // react lucide
-import { X } from "lucide-react";
+import { X, SendHorizontal } from "lucide-react";
 
 // Apis
 import { initiateAssistant, talkToAssistant } from "../../apis/assistants";
@@ -24,15 +24,19 @@ const Conversation = (props) => {
   const [userMsg, setUserMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [pendingMessage, setPendingMessage] = useState(null);
+  const [isLoadingTyping, setLoadingTyping] = useState(false);
 
   const handleInitiateAssistant = async () => {
-    if (hasInitiatedRef.current) return;  // Prevent multiple executions
+    if (hasInitiatedRef.current) return; // Prevent multiple executions
     hasInitiatedRef.current = true;
 
     try {
       if (messages && Array.isArray(messages) && messages.length === 0) {
+        setLoading(true);
         const result = await initiateAssistant();
         if (result && result.data) {
+          setLoading(false);
+          setLoadingTyping(true);
           setPendingMessage(result.data.text);
         }
       }
@@ -54,6 +58,8 @@ const Conversation = (props) => {
 
       const result = await talkToAssistant({ message: userMsg });
       if (result && result.data) {
+        setLoading(false);
+        setLoadingTyping(true);
         setPendingMessage(result.data.text);
       }
     } catch (error) {
@@ -69,7 +75,7 @@ const Conversation = (props) => {
       messages: finalMessages,
     });
     setPendingMessage(null);
-    setLoading(false);
+    setLoadingTyping(false);
   };
 
   const TypewriterText = ({ text, onComplete }) => {
@@ -112,7 +118,7 @@ const Conversation = (props) => {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-2 md:bottom-16 md:right-16 flex flex-col h-96 w-96 md:w-2/5 border dark:border-white border-black rounded-2xl shadow-lg overflow-y p-4 bg-gray-100 dark:bg-gray-800 shadow-lg rounded-2xl">
+    <div className="fixed bottom-5 right-2 md:bottom-16 md:right-16 flex flex-col h-96 w-96 md:w-2/5 border dark:border-white border-blue-900 rounded-2xl shadow-lg overflow-y p-4 bg-gray-100 dark:bg-gray-800 shadow-lg rounded-2xl">
       <div className="flex justify-end items-center mb-2">
         <button
           className="text-gray-500 hover:text-gray-700"
@@ -178,15 +184,21 @@ const Conversation = (props) => {
           value={userMsg}
           onChange={(e) => setUserMsg(e.target.value)}
           placeholder="Type a message..."
-          className="flex-grow p-2 border dark:border-gray-600 rounded-l-xl focus:outline-none text-black dark:text-white dark:bg-gray-700"
+          className="flex-grow p-2 border dark:border-gray-600 rounded-l-xl focus:outline-none text-black dark:text-white dark:bg-gray-700 border border-blue-900 dark:border-blue-600"
         />
         <div
           className={`dark:bg-blue-600 bg-blue-900 text-white px-4 py-2 rounded-r-xl  cursor-${
-            loading ? "not-allowed" : "pointer"
+            loading || isLoadingTyping ? "not-allowed" : "pointer"
           } flex items-center`}
-          onClick={() => (!loading ? handleSendMessageToAssistant() : null)}
+          onClick={() =>
+            !loading && !isLoadingTyping ? handleSendMessageToAssistant() : null
+          }
         >
-          {loading ? <LoadingAnimation /> : "Send"}
+          {loading || isLoadingTyping ? (
+            <LoadingAnimation />
+          ) : (
+            <SendHorizontal className="w-6 h-6" />
+          )}
         </div>
       </div>
     </div>
