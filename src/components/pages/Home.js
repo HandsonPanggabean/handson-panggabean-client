@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 // Sweetalert
 import Swal from "sweetalert2";
 
+// react lucide
+import { Send } from "lucide-react";
+
 // Helpers
 import { t } from "../../helpers/translator";
 
@@ -253,7 +256,11 @@ const Home = (props) => {
                   } `}
                   onClick={() => (!isLoading ? handleSendEmail() : null)}
                 >
-                  {isLoading ? <LoadingAnimation /> : t("send", lang)}
+                  {isLoading ? (
+                    <LoadingAnimation />
+                  ) : (
+                    <Send className="w-6 h-6" />
+                  )}
                 </div>
               </div>
             </div>
