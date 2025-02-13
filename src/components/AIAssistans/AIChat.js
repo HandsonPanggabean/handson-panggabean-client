@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // react lucide
-import { MessageCircle } from "lucide-react";
+import { Bot } from "lucide-react";
 
 // Components
 import Conversation from "./Conversation";
@@ -17,7 +17,7 @@ const AIChat = () => {
           className="fixed bottom-8 right-8 md:bottom-16 md:right-16 dark:bg-blue-600 bg-blue-900 text-white p-4 rounded-full shadow-lg focus:outline-none transition-opacity duration-300 cursor-pointer"
           onClick={() => setIsOpenModalChat(!isOpenModalChat)}
         >
-          <MessageCircle className="w-6 h-6" />
+          <Bot className="w-10 h-10" />
         </div>
       )}
     </div>
