@@ -117,7 +117,7 @@ const Home = (props) => {
         <div className="md:w-3/5 text-center md:text-left mt-10 md:mt-0">
           <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
             {t("landing_page_intro_1", lang)}{" "}
-            <span className="text-blue-900 dark:text-blue-400">
+            <span className="text-blue-900 dark:text-yellow-400">
               {t("full_name", lang)}
             </span>
           </h1>
@@ -187,7 +187,7 @@ const Home = (props) => {
       <WorkExperiences lang={lang} t={t} />
 
       <div className="max-w-4xl mx-auto mt-28 p-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400">
           {t("contact_me_title", lang)}
         </h2>
         <div className="flex justify-center items-center mt-10">
@@ -200,7 +200,7 @@ const Home = (props) => {
                   </label>
                   <input
                     type="text"
-                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
+                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) => setSenderName(value)}
                   />
                 </div>
@@ -210,7 +210,7 @@ const Home = (props) => {
                   </label>
                   <input
                     type="email"
-                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
+                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) => setSenderEmail(value)}
                   />
                 </div>
@@ -222,7 +222,7 @@ const Home = (props) => {
                   </label>
                   <input
                     type="text"
-                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-2 dark:focus:ring-white"
+                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) =>
                       setSenderEmailSubject(value)
                     }
@@ -251,7 +251,7 @@ const Home = (props) => {
               </div>
               <div className="flex justify-end">
                 <div
-                  className={`px-6 py-2 dark:bg-blue-600 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500 cursor-${
+                  className={`px-6 py-2 dark:bg-yellow-400 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500 cursor-${
                     isLoading ? "not-allowed" : "pointer"
                   } `}
                   onClick={() => (!isLoading ? handleSendEmail() : null)}
@@ -259,7 +259,7 @@ const Home = (props) => {
                   {isLoading ? (
                     <LoadingAnimation />
                   ) : (
-                    <Send className="w-6 h-6" />
+                    <Send className="w-6 h-6 dark:text-black" />
                   )}
                 </div>
               </div>
