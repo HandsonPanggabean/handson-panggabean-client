@@ -32,9 +32,9 @@ const Navbar = ({ theme, setTheme }) => {
             Handson
           </span> */}
         </div>
-        <div className="flex items-center md:order-2 space-x-1 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex items-center md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse">
           <label className="inline-flex items-center cursor-pointer mr-5">
-            <span className="text-xl font-bold text-gray-900 dark:text-gray-300 mr-1">
+            <span className="text-xl font-bold text-gray-900 dark:text-gray-300 mr-2">
               EN
             </span>
 
@@ -47,10 +47,10 @@ const Navbar = ({ theme, setTheme }) => {
                   lang: lang === "en" ? "id" : "en",
                 })
               }
-              className="relative w-11 h-6 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 bg-blue-900 dark:bg-blue-600"
+              className="relative w-11 h-6 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full dark:peer-checked:after:border-black peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] dark:after:bg-black after:bg-white dark:after:border-black after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 bg-blue-900 dark:bg-yellow-400"
             />
 
-            <span className="text-xl font-bold text-gray-900 dark:text-gray-300 ml-1">
+            <span className="text-xl font-bold text-gray-900 dark:text-gray-300 ml-2">
               ID
             </span>
           </label>

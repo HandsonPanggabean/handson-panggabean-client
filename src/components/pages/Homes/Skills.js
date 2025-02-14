@@ -174,7 +174,7 @@ const Skills = (props) => {
   if (skills && Array.isArray(skills) && skills.length > 0) {
     return (
       <div className="max-w-4xl mx-auto py-32">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400">
           {t("tech_stacks_title", lang)}
         </h2>
         <div className="flex flex-wrap justify-center items-center gap-10 mt-10 px-4">

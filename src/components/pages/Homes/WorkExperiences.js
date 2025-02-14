@@ -38,7 +38,7 @@ const WorkExperiences = (props) => {
   ) {
     return (
       <div className="max-w-4xl mx-auto py-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400">
           {t("work_experiences_title", lang)}
         </h2>
         <div className="mt-10 space-y-10 px-4">
@@ -58,7 +58,7 @@ const WorkExperiences = (props) => {
                 <h3 className="text-black dark:text-white text-left font-bold text-xl md:text-2xl">
                   {exp.company}
                 </h3>
-                <p className="text-left text-blue-900 dark:text-blue-400 font-semibold">
+                <p className="text-left text-blue-900 dark:text-yellow-400 font-semibold">
                   {exp.position}
                 </p>
                 {exp && exp.descriptions && exp.descriptions.length > 0 ? (

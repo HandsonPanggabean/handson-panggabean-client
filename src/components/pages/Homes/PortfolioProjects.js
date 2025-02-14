@@ -11,7 +11,7 @@ import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 import { useMediaQuery } from "react-responsive";
 
 // react lucide
-import { Maximize2 } from "lucide-react";
+import { Maximize2, CirclePause, CirclePlay } from "lucide-react";
 
 // Images
 import eDot_1 from "../../../assets/images/portfolioProjects/eDot/eDot_1.png";
@@ -354,7 +354,7 @@ const PortfolioProjects = (props) => {
   ) {
     return (
       <div className="max-w-4xl mx-auto py-32">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-blue-400 mb-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400 mb-6">
           {t("portfolio_projects_title", lang)}
         </h2>
         {portfolioProjects.map((portfolioProject, index) => {
@@ -375,54 +375,18 @@ const PortfolioProjects = (props) => {
                   </div>
                   <div
                     onClick={() => handleAutoPlaySlide(name)}
-                    className="w-8 h-8 flex items-center justify-center rounded-full relative shadow-lg focus:outline-none cursor-pointer"
+                    className="flex items-center justify-center rounded-full relative shadow-lg focus:outline-none cursor-pointer"
                   >
-                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center">
+                    <div className="rounded-full flex items-center justify-center">
                       {autoplayEnabled ? (
-                        <div className="focus:outline-none">
-                          <svg
-                            className="w-8 h-8"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                            ></path>
-                          </svg>
-                        </div>
+                        <CirclePause className="w-8 h-8 text-black dark:text-white" />
                       ) : (
-                        <div className="focus:outline-none">
-                          <svg
-                            className="w-8 h-8"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                            ></path>
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                            ></path>
-                          </svg>
-                        </div>
+                        <CirclePlay className="w-8 h-8 text-black dark:text-white" />
                       )}
                     </div>
                   </div>
                 </div>
-                <div className="text-sm md:text-lg mt-2 text-gray-800 dark:text-gray-300">
+                <div className="text-sm md:text-lg mt-2 text-gray-800 dark:text-yellow-400">
                   {description}
                 </div>
               </div>

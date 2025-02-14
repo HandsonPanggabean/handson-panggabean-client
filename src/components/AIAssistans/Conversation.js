@@ -118,13 +118,13 @@ const Conversation = (props) => {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-2 md:bottom-16 md:right-16 flex flex-col h-96 w-96 md:w-2/5 border dark:border-white border-blue-900 rounded-2xl shadow-lg overflow-y p-4 bg-gray-100 dark:bg-gray-800 shadow-lg rounded-2xl">
+    <div className="fixed bottom-5 right-2 md:bottom-16 md:right-16 flex flex-col h-96 w-96 md:w-2/5 border dark:border-yellow-400 border-blue-900 rounded-2xl shadow-lg overflow-y p-4 bg-gray-100 dark:bg-gray-800 shadow-lg rounded-2xl">
       <div className="flex justify-end items-center mb-2">
         <button
           className="text-gray-500 hover:text-gray-700"
           onClick={() => setIsOpenModalChat(false)}
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5 dark:text-yellow-400 text-blue-900" />
         </button>
       </div>
       <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 md:p-2">
@@ -141,7 +141,7 @@ const Conversation = (props) => {
                     <div
                       className={`max-w-full md:max-w-xl p-3 rounded-2xl shadow-md text-sm ${
                         msg.role === "user"
-                          ? "dark:bg-blue-600 bg-blue-900 text-white rounded-br-none text-left"
+                          ? "dark:bg-yellow-400 bg-blue-900 text-white rounded-br-none text-left dark:text-black"
                           : "bg-white dark:bg-gray-700 dark:text-white text-gray-800 rounded-bl-none text-left"
                       }`}
                     >
@@ -187,7 +187,7 @@ const Conversation = (props) => {
           className="flex-grow p-2 border dark:border-gray-600 rounded-l-xl focus:outline-none text-black dark:text-white dark:bg-gray-700 border border-blue-900 dark:border-blue-600"
         />
         <div
-          className={`dark:bg-blue-600 bg-blue-900 text-white px-4 py-2 rounded-r-xl  cursor-${
+          className={`dark:bg-yellow-400 bg-blue-900 text-white px-4 py-2 rounded-r-xl  cursor-${
             loading || isLoadingTyping ? "not-allowed" : "pointer"
           } flex items-center`}
           onClick={() =>
@@ -197,7 +197,7 @@ const Conversation = (props) => {
           {loading || isLoadingTyping ? (
             <LoadingAnimation />
           ) : (
-            <SendHorizontal className="w-6 h-6" />
+            <SendHorizontal className="w-6 h-6 dark:text-black" />
           )}
         </div>
       </div>
