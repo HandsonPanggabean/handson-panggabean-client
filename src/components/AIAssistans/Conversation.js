@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // react lucide
-import { X, SendHorizontal } from "lucide-react";
+import { X, SendHorizontal, Ellipsis } from "lucide-react";
 
 // Apis
 import { initiateAssistant, talkToAssistant } from "../../apis/assistants";
@@ -157,12 +157,9 @@ const Conversation = (props) => {
                 );
               })
             : null}
+
           {loading ? (
-            <div className="flex space-x-1 py-2 px-3">
-              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
-              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
-              <span className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></span>
-            </div>
+            <Ellipsis className="w-12 h-12 text-gray-500 dark:text-gray-200 animate-bounce" />
           ) : null}
 
           {pendingMessage ? (
