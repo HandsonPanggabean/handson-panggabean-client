@@ -173,12 +173,12 @@ const Skills = (props) => {
 
   if (skills && Array.isArray(skills) && skills.length > 0) {
     return (
-      <div className="max-w-4xl mx-auto py-32">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400">
+      <div className="max-w-4xl py-32 mx-auto">
+        <h2 className="text-3xl font-bold text-center text-blue-900 md:text-4xl dark:text-yellow-400">
           {t("tech_stacks_title", lang)}
         </h2>
-        <div className="flex flex-wrap justify-center items-center gap-10 mt-10 px-4">
-          {/* <div className="mt-10 space-y-10 px-4 flex items-center justify-center gap-6"> */}
+        <div className="flex flex-wrap items-center justify-center px-4 mt-10 gap-10">
+          {/* <div className="flex items-center justify-center px-4 mt-10 space-y-10 gap-6"> */}
           {skills.map((skill, index) => (
             <div key={index} className="flex flex-col items-center">
               <div>
@@ -188,7 +188,7 @@ const Skills = (props) => {
                   className="w-20 h-auto rounded-lg"
                 />
               </div>
-              <div className="font-semibold text-md mt-1 text-black dark:text-white">
+              <div className="mt-1 font-semibold text-black text-md dark:text-white">
                 {skill.name}
               </div>
             </div>

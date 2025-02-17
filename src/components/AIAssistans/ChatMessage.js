@@ -21,7 +21,7 @@ const ChatMessage = ({ message }) => {
               {String(children).replace(/\n$/, "")}
             </SyntaxHighlighter>
           ) : (
-            <code className="dark:bg-gray-800 bg-gray-200 rounded p-1" {...props}>
+            <code className="p-1 bg-gray-200 rounded dark:bg-gray-800" {...props}>
               {children}
             </code>
           );

@@ -31,16 +31,16 @@ const FullscreenImageViewer = ({
   if (!images || images.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90">
       <div
-        className="absolute top-4 right-4 text-white p-2 rounded-full bg-gray-800 hover:bg-gray-700 cursor-pointer"
+        className="absolute p-2 text-white bg-gray-800 rounded-full cursor-pointer top-4 right-4 hover:bg-gray-700"
         onClick={onClose}
       >
         <X className="w-6 h-6" />
       </div>
 
       <div
-        className="absolute left-4 text-white p-2 rounded-full bg-gray-800 hover:bg-gray-700 cursor-pointer"
+        className="absolute p-2 text-white bg-gray-800 rounded-full cursor-pointer left-4 hover:bg-gray-700"
         onClick={onPrev}
       >
         <ChevronLeft className="w-8 h-8" />
@@ -49,11 +49,11 @@ const FullscreenImageViewer = ({
       <img
         src={images[currentIndex].img_url}
         alt={`fullscreen-${currentIndex}`}
-        className="max-w-full max-h-full object-contain rounded-lg shadow-xl cursor-pointer"
+        className="object-contain max-w-full max-h-full rounded-lg shadow-xl cursor-pointer"
       />
 
       <div
-        className="absolute right-4 text-white p-2 rounded-full bg-gray-800 hover:bg-gray-700 cursor-pointer"
+        className="absolute p-2 text-white bg-gray-800 rounded-full cursor-pointer right-4 hover:bg-gray-700"
         onClick={onNext}
       >
         <ChevronRight className="w-8 h-8" />

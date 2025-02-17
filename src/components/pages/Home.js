@@ -102,8 +102,8 @@ const Home = (props) => {
   };
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-900 text-white py-5 md:py-20">
-      <div className="flex flex-col md:flex-row items-center justify-center py-20 px-4 md:px-60">
+    <div className="py-5 text-white bg-gray-200 dark:bg-gray-900 md:py-20">
+      <div className="flex flex-col items-center justify-center px-4 py-20 md:flex-row md:px-60">
         <div className="md:w-2/5">
           <div className="flex ">
             <img
@@ -114,20 +114,20 @@ const Home = (props) => {
           </div>
         </div>
 
-        <div className="md:w-3/5 text-center md:text-left mt-10 md:mt-0">
-          <h1 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
+        <div className="mt-10 text-center md:w-3/5 md:text-left md:mt-0">
+          <h1 className="text-4xl font-bold text-black md:text-5xl dark:text-white">
             {t("landing_page_intro_1", lang)}{" "}
             <span className="text-blue-900 dark:text-yellow-400">
               {t("full_name", lang)}
             </span>
           </h1>
-          <h2 className="text-xl md:text-2xl font-semibold mt-2 text-black dark:text-white">
+          <h2 className="mt-2 text-xl font-semibold text-black md:text-2xl dark:text-white">
             {t("profession", lang)}
           </h2>
-          <p className="text-black dark:text-gray-300 mt-4">
+          <p className="mt-4 text-black dark:text-gray-300">
             {t("landing_page_description", lang)}
           </p>
-          <div className="flex justify-center md:justify-start mt-6 gap-4">
+          <div className="flex justify-center mt-6 gap-4 md:justify-start">
             <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
@@ -186,43 +186,43 @@ const Home = (props) => {
 
       <WorkExperiences lang={lang} t={t} />
 
-      <div className="max-w-4xl mx-auto mt-28 p-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400">
+      <div className="max-w-4xl p-4 mx-auto mt-28">
+        <h2 className="text-3xl font-bold text-center text-blue-900 md:text-4xl dark:text-yellow-400">
           {t("contact_me_title", lang)}
         </h2>
-        <div className="flex justify-center items-center mt-10">
-          <div className="w-full p-4 md:p-8 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg space-y-10">
+        <div className="flex items-center justify-center mt-10">
+          <div className="w-full p-4 bg-gray-100 rounded-lg shadow-lg space-y-10 md:p-8 dark:bg-gray-800">
             <div className="space-y-4">
               <div className="flex space-x-4">
                 <div className="w-1/2">
-                  <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block mb-1 text-left text-gray-700 dark:text-gray-300">
                     {t("contact_me_name_label", lang)}
                   </label>
                   <input
                     type="text"
-                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
+                    className="w-full p-2 text-black bg-white border border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) => setSenderName(value)}
                   />
                 </div>
                 <div className="w-1/2">
-                  <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block mb-1 text-left text-gray-700 dark:text-gray-300">
                     {t("contact_me_email_label", lang)}
                   </label>
                   <input
                     type="email"
-                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
+                    className="w-full p-2 text-black bg-white border border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) => setSenderEmail(value)}
                   />
                 </div>
               </div>
               <div className="flex space-x-4">
                 <div className="w-full">
-                  <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
+                  <label className="block mb-1 text-left text-gray-700 dark:text-gray-300">
                     {t("contact_me_subject_label", lang)}
                   </label>
                   <input
                     type="text"
-                    className="w-full p-2 bg-white dark:bg-gray-700 border border-gray-600 rounded-md text-black dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
+                    className="w-full p-2 text-black bg-white border border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) =>
                       setSenderEmailSubject(value)
                     }
@@ -230,7 +230,7 @@ const Home = (props) => {
                 </div>
               </div>
               <div>
-                <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block mb-1 text-left text-gray-700 dark:text-gray-300">
                   {t("contact_me_message_label", lang)}
                 </label>
                 <InputHtmlEditor
@@ -241,7 +241,7 @@ const Home = (props) => {
                 />
               </div>
               <div>
-                <label className="text-left block text-gray-700 dark:text-gray-300 mb-1">
+                <label className="block mb-1 text-left text-gray-700 dark:text-gray-300">
                   {t("contact_me_preview_message_label", lang)}
                 </label>
                 <div

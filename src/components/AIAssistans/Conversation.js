@@ -81,7 +81,7 @@ const Conversation = (props) => {
   const TypewriterText = ({ text, onComplete }) => {
     const [displayedText, setDisplayedText] = useState("");
     const [index, setIndex] = useState(0);
-    const messageEndRef = useRef(null); // Ref to track the message container
+    // const messageEndRef = useRef(null); // Ref to track the message container
 
     useEffect(() => {
       if (index < text.length) {
@@ -98,17 +98,17 @@ const Conversation = (props) => {
       }
     }, [index, text, onComplete]);
 
-    useEffect(() => {
-      if (messageEndRef.current) {
-        messageEndRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-    }, [displayedText]);
+    // useEffect(() => {
+    //   if (messageEndRef.current) {
+    //     messageEndRef.current.scrollIntoView({ behavior: "smooth" });
+    //   }
+    // }, [displayedText]);
 
     return (
       <div>
         <ChatMessage message={displayedText} />
         {/* Invisible div to keep the scroll at the bottom */}
-        <div ref={messageEndRef} />
+        {/* <div ref={messageEndRef} /> */}
       </div>
     );
   };
@@ -118,13 +118,13 @@ const Conversation = (props) => {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-2 md:bottom-16 md:right-16 flex flex-col h-96 w-96 md:w-2/5 border dark:border-yellow-400 border-blue-900 rounded-2xl shadow-lg overflow-y p-4 bg-gray-100 dark:bg-gray-800 shadow-lg rounded-2xl">
-      <div className="flex justify-end items-center mb-2">
+    <div className="fixed flex flex-col w-4/5 p-4 bg-gray-100 border border-blue-900 shadow-lg bottom-5 right-8 md:bottom-16 md:right-16 h-96 md:w-2/5 dark:border-yellow-400 rounded-2xl overflow-y dark:bg-gray-800">
+      <div className="flex items-center justify-end mb-2">
         <button
           className="text-gray-500 hover:text-gray-700"
           onClick={() => setIsOpenModalChat(false)}
         >
-          <X className="w-5 h-5 dark:text-yellow-400 text-blue-900" />
+          <X className="w-5 h-5 text-blue-900 dark:text-yellow-400" />
         </button>
       </div>
       <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 md:p-2">
@@ -146,7 +146,7 @@ const Conversation = (props) => {
                       }`}
                     >
                       <div>
-                        <div className="font-bold mb-1">
+                        <div className="mb-1 font-bold">
                           {msg.role === "user" ? "You" : "AI Assistant"}
                         </div>
                         <ChatMessage message={msg.content} />
@@ -164,8 +164,8 @@ const Conversation = (props) => {
 
           {pendingMessage ? (
             <div className="flex justify-start">
-              <div className="max-w-full md:max-w-xl p-3 rounded-2xl shadow-md text-sm bg-white dark:bg-gray-700 dark:text-white text-gray-800 rounded-bl-none text-left">
-                <div className="font-bold mb-1">AI Assistant</div>
+              <div className="max-w-full p-3 text-sm text-left text-gray-800 bg-white rounded-bl-none shadow-md md:max-w-xl rounded-2xl dark:bg-gray-700 dark:text-white">
+                <div className="mb-1 font-bold">AI Assistant</div>
                 <TypewriterText
                   text={pendingMessage}
                   onComplete={handleTypewriterComplete}
@@ -181,7 +181,8 @@ const Conversation = (props) => {
           value={userMsg}
           onChange={(e) => setUserMsg(e.target.value)}
           placeholder="Type a message..."
-          className="flex-grow p-2 border dark:border-gray-600 rounded-l-xl focus:outline-none text-black dark:text-white dark:bg-gray-700 border border-blue-900 dark:border-blue-600"
+          className="flex-grow p-2 text-black border border-blue-900 dark:border-gray-600 rounded-l-xl focus:outline-none dark:text-white dark:bg-gray-700 dark:border-blue-600"
+          disabled={loading}
         />
         <div
           className={`dark:bg-yellow-400 bg-blue-900 text-white px-4 py-2 rounded-r-xl  cursor-${

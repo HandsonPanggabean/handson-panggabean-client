@@ -37,15 +37,15 @@ const WorkExperiences = (props) => {
     workExperiences.length > 0
   ) {
     return (
-      <div className="max-w-4xl mx-auto py-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400">
+      <div className="max-w-4xl py-10 mx-auto">
+        <h2 className="text-3xl font-bold text-center text-blue-900 md:text-4xl dark:text-yellow-400">
           {t("work_experiences_title", lang)}
         </h2>
-        <div className="mt-10 space-y-10 px-4">
+        <div className="px-4 mt-10 space-y-10">
           {workExperiences.map((exp, index) => (
             <div
               key={index}
-              className="flex items-center flex-col md:flex-row p-4 bg-gray-100 dark:bg-gray-800 shadow rounded-lg"
+              className="flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow md:flex-row dark:bg-gray-800"
             >
               <div className="flex items-center ml-0 md:ml-3 md:w-1/5">
                 <img
@@ -55,22 +55,22 @@ const WorkExperiences = (props) => {
                 />
               </div>
               <div className="mt-5 md:mt-0 md:w-4/5">
-                <h3 className="text-black dark:text-white text-left font-bold text-xl md:text-2xl">
+                <h3 className="text-xl font-bold text-left text-black dark:text-white md:text-2xl">
                   {exp.company}
                 </h3>
-                <p className="text-left text-blue-900 dark:text-yellow-400 font-semibold">
+                <p className="font-semibold text-left text-blue-900 dark:text-yellow-400">
                   {exp.position}
                 </p>
                 {exp && exp.descriptions && exp.descriptions.length > 0 ? (
-                  <div className="text-left text-black dark:text-white mt-2 text-sm">
-                    <ul className="list-disc ml-3">
+                  <div className="mt-2 text-sm text-left text-black dark:text-white">
+                    <ul className="ml-3 list-disc">
                       {exp.descriptions.map((description, idx) => {
                         return <li key={idx}>{description}</li>;
                       })}
                     </ul>
                   </div>
                 ) : null}
-                <p className="text-sm text-black dark:text-white text-left mt-2 font-semibold">
+                <p className="mt-2 text-sm font-semibold text-left text-black dark:text-white">
                   {exp.period}
                 </p>
               </div>
