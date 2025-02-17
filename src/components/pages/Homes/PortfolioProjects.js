@@ -353,8 +353,8 @@ const PortfolioProjects = (props) => {
     portfolioProjects.length > 0
   ) {
     return (
-      <div className="max-w-4xl mx-auto py-32">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-900 dark:text-yellow-400 mb-6">
+      <div className="max-w-4xl py-32 mx-auto">
+        <h2 className="mb-6 text-3xl font-bold text-center text-blue-900 md:text-4xl dark:text-yellow-400">
           {t("portfolio_projects_title", lang)}
         </h2>
         {portfolioProjects.map((portfolioProject, index) => {
@@ -364,10 +364,10 @@ const PortfolioProjects = (props) => {
           return (
             <div
               key={index}
-              className="w-full flex flex-col justify-center bg-transparent p-4 pb-20"
+              className="flex flex-col justify-center w-full p-4 pb-20 bg-transparent"
             >
               <div className="mb-8">
-                <div className="flex gap-4 items-center justify-center">
+                <div className="flex items-center justify-center gap-4">
                   <div className="text-3xl font-bold text-gray-900 dark:text-gray-200">
                     {name && name === "ccs"
                       ? "Combined Clinics Sustainability"
@@ -375,9 +375,9 @@ const PortfolioProjects = (props) => {
                   </div>
                   <div
                     onClick={() => handleAutoPlaySlide(name)}
-                    className="flex items-center justify-center rounded-full relative shadow-lg focus:outline-none cursor-pointer"
+                    className="relative flex items-center justify-center rounded-full shadow-lg cursor-pointer focus:outline-none"
                   >
-                    <div className="rounded-full flex items-center justify-center">
+                    <div className="flex items-center justify-center rounded-full">
                       {autoplayEnabled ? (
                         <CirclePause className="w-8 h-8 text-black dark:text-white" />
                       ) : (
@@ -386,7 +386,7 @@ const PortfolioProjects = (props) => {
                     </div>
                   </div>
                 </div>
-                <div className="text-sm md:text-lg mt-2 text-gray-800 dark:text-yellow-400">
+                <div className="mt-2 text-sm text-gray-800 md:text-lg dark:text-yellow-400">
                   {description}
                 </div>
               </div>
@@ -418,7 +418,7 @@ const PortfolioProjects = (props) => {
                   {images.map((image, idx) => (
                     <SwiperSlide
                       key={`${name}-${idx}`}
-                      className="transition-all duration-500 flex justify-center align-center"
+                      className="flex justify-center transition-all duration-500 align-center"
                     >
                       <div
                         className={`relative flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-lg transition-all duration-500 ${
@@ -442,14 +442,14 @@ const PortfolioProjects = (props) => {
                         <img
                           src={image.img_url}
                           alt={`slide-${name}-${idx}`}
-                          className="w-full h-full object-contain rounded-lg"
+                          className="object-contain w-full h-full rounded-lg"
                         />
                         {image.activeIndex ? (
                           <div
                             onClick={() =>
                               openFullscreen(portfolioProject.images, idx)
                             }
-                            className="absolute top-2 right-2 bg-black bg-opacity-50 p-2 rounded-full hover:bg-opacity-80 transition cursor-pointer"
+                            className="absolute p-2 bg-black rounded-full cursor-pointer top-2 right-2 bg-opacity-50 hover:bg-opacity-80 transition"
                           >
                             <Maximize2 className="w-5 h-5 text-white" />
                           </div>
