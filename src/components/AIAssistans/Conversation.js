@@ -15,6 +15,9 @@ import ChatMessage from "./ChatMessage";
 
 const Conversation = (props) => {
   const { setIsOpenModalChat } = props || {};
+
+  const lang = useSelector((state) => state.lang);
+
   const dispatch = useDispatch();
 
   const hasInitiatedRef = useRef(false);
@@ -33,7 +36,7 @@ const Conversation = (props) => {
     try {
       if (messages && Array.isArray(messages) && messages.length === 0) {
         setLoading(true);
-        const result = await initiateAssistant();
+        const result = await initiateAssistant({ lang });
         if (result && result.data) {
           setLoading(false);
           setLoadingTyping(true);
