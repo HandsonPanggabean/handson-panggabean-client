@@ -449,7 +449,7 @@ const PortfolioProjects = (props) => {
                             onClick={() =>
                               openFullscreen(portfolioProject.images, idx)
                             }
-                            className="absolute p-2 bg-black rounded-full cursor-pointer top-2 right-2 bg-opacity-50 hover:bg-opacity-80 transition"
+                            className="absolute p-2 transition bg-black bg-opacity-50 rounded-full cursor-pointer top-2 right-2 hover:bg-opacity-80"
                           >
                             <Maximize2 className="w-5 h-5 text-white" />
                           </div>

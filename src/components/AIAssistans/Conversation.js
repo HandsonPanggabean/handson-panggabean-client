@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 // react lucide
-import { X, SendHorizontal, Ellipsis } from "lucide-react";
+import { X, SendHorizontal, Ellipsis, Bot } from "lucide-react";
 
 // Apis
 import { initiateAssistant, talkToAssistant } from "../../apis/assistants";
@@ -121,16 +121,20 @@ const Conversation = (props) => {
   }, []);
 
   return (
-    <div className="fixed flex flex-col w-4/5 p-4 bg-gray-100 border border-blue-900 shadow-lg bottom-5 right-8 md:bottom-16 md:right-16 h-96 md:w-2/5 dark:border-yellow-400 rounded-2xl overflow-y dark:bg-gray-800">
-      <div className="flex items-center justify-end mb-2">
+    <div className="fixed bottom-0 right-0 flex flex-col w-full h-screen overflow-y-auto bg-gray-100 shadow-lg md:border md:border-blue-900 md:bottom-16 md:right-16 md:h-[50%] md:w-2/5 md:dark:border-yellow-400 md:rounded-2xl dark:bg-gray-800">
+      <div className="flex items-center justify-end p-6 bg-blue-900 md:-p-4 md:p-4 dark:bg-yellow-400">
+        <div className="flex-1 block">
+          <Bot className="text-white w-7 h-7 dark:text-gray-900" />
+        </div>
         <button
           className="text-gray-500 hover:text-gray-700"
           onClick={() => setIsOpenModalChat(false)}
         >
-          <X className="w-5 h-5 text-blue-900 dark:text-yellow-400" />
+          <X className="text-white w-7 h-7 dark:text-gray-900" />
         </button>
       </div>
-      <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 md:p-2">
+
+      <div className="flex-1 p-4 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100 md:p-2">
         <div className="p-1 space-y-4">
           {messages && Array.isArray(messages) && messages.length > 0
             ? messages.map((msg, idx) => {
@@ -149,11 +153,14 @@ const Conversation = (props) => {
                       }`}
                     >
                       <div>
-                        <div className="mb-1 font-bold">
-                          {msg.role === "user" ? "You" : "AI Assistant"}
+                        <div
+                          className={`mb-1 font-bold ${
+                            msg.role === "user" ? "text-right" : "text-left"
+                          }`}
+                        >
+                          {msg.role === "user" ? "" : "AI Assistant"}
                         </div>
                         <ChatMessage message={msg.content} />
-                        {/* <div>{msg.content}</div> */}
                       </div>
                     </div>
                   </div>
@@ -178,7 +185,8 @@ const Conversation = (props) => {
           ) : null}
         </div>
       </div>
-      <div className="flex mt-4">
+
+      <div className="flex p-4 border-t border-blue-900 rounded-xl md:rounded-none dark:border-yellow-400">
         <input
           type="text"
           value={userMsg}
@@ -188,7 +196,7 @@ const Conversation = (props) => {
           disabled={loading}
         />
         <div
-          className={`dark:bg-yellow-400 bg-blue-900 text-white px-4 py-2 rounded-r-xl  cursor-${
+          className={`dark:bg-yellow-400 bg-blue-900 text-white px-4 py-2 border border-blue-900 dark:border-yellow-400 rounded-r-xl  cursor-${
             loading || isLoadingTyping ? "not-allowed" : "pointer"
           } flex items-center`}
           onClick={() =>
