@@ -24,5 +24,8 @@
   "contact_me_subject_label": "Subyek",
   "contact_me_message_label": "Pesan",
   "contact_me_preview_message_label": "Pratinjau Pesan",
-  "send": "Kirim"
+  "send": "Kirim",
+  "not_found_title": "Halaman tidak ditemukan.",
+  "not_found_desc": "Maaf, saya tidak dapat menemukan halaman tersebut. Kamu bisa menemukan banyak hal menarik di halaman utama.",
+  "not_found_btn_text": "Kembali ke Halaman Utama"
 }
