@@ -9,6 +9,7 @@ import "./App.css";
 // Pages
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
+import NotFound from "./components/pages/NotFound";
 
 // Components
 import Navbar from "./components/Navbar";
@@ -33,7 +34,7 @@ function App() {
   }, [theme]);
 
   return (
-    <div className="App">
+    <div className="flex flex-col min-h-screen App">
       <Navbar theme={theme} setTheme={setTheme} />
       <Suspense>
         <Routes>
@@ -43,6 +44,7 @@ function App() {
             element={<Home theme={theme} />}
           />
           <Route path="/about" name="About page" element={<About />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
       <AIChat />

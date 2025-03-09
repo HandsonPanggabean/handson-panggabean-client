@@ -24,5 +24,8 @@
   "contact_me_subject_label": "Subject",
   "contact_me_message_label": "Message",
   "contact_me_preview_message_label": "Message's preview",
-  "send": "Send"
+  "send": "Send",
+  "not_found_title": "Page not found.",
+  "not_found_desc": "Sorry, we can't find that page. You'll find lots to explore on the home page.",
+  "not_found_btn_text": "Back to Home"
 }
