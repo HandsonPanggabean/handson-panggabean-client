@@ -9,8 +9,8 @@ function getServerURL() {
 
   let env;
   switch (host) {
-    case "handson-panggabean-projects.firebaseapp.com" ||
-      "handson-panggabean-projects.web.app":
+    case "handson-panggabean-projects.firebaseapp.com":
+    case "handson-panggabean-projects.web.app":
       env = production;
       break;
     default:
