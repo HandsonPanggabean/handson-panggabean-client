@@ -17,7 +17,7 @@ import { sendMessageToMyEmail } from "../../apis/email";
 // Images & Icons
 import profile_picture_handson from "../../assets/images/profile_picture_handson.jpg";
 import linked_in_logo from "../../assets/icons/brands/linked_in_logo.avif";
-import instagram_logo from "../../assets/icons/brands/instagram_logo.webp";
+// import instagram_logo from "../../assets/icons/brands/instagram_logo.webp";
 
 import github_icon_light from "../../assets/icons/skills/github_icon_light.svg";
 import github_icon_dark from "../../assets/icons/skills/github_icon_dark.svg";
@@ -144,7 +144,7 @@ const Home = (props) => {
                 />
               </div>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
+            {/* <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
                 onClick={() =>
@@ -157,7 +157,7 @@ const Home = (props) => {
                   className="w-8 h-auto"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
