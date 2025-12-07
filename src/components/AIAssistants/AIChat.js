@@ -13,7 +13,8 @@ import { useMediaQuery } from "react-responsive";
 import Conversation from "./Conversation";
 
 const AIChat = (props) => {
-  const { is_server_sleep, handleWakeServer, showError } = props || {};
+  const { is_server_sleep, handleWakeServer, showError, initialConversation } =
+    props || {};
   const smallScreen = useMediaQuery({ query: "(max-width: 767px)" });
 
   const [isOpenModalChat, setIsOpenModalChat] = useState(false);
@@ -48,6 +49,7 @@ const AIChat = (props) => {
               is_server_sleep={is_server_sleep}
               handleWakeServer={handleWakeServer}
               showError={showError}
+              initialConversation={initialConversation}
             />
           </motion.div>
         )}

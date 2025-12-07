@@ -14,8 +14,13 @@ import LoadingAnimation from "../LoadingAnimation";
 import ChatMessage from "./ChatMessage";
 
 const Conversation = (props) => {
-  const { setIsOpenModalChat, is_server_sleep, handleWakeServer, showError } =
-    props || {};
+  const {
+    setIsOpenModalChat,
+    is_server_sleep,
+    handleWakeServer,
+    showError,
+    initialConversation,
+  } = props || {};
 
   const lang = useSelector((state) => state.lang);
 
@@ -121,10 +126,14 @@ const Conversation = (props) => {
     if (!is_server_sleep) {
       handleInitiateAssistant();
     } else {
-      setLoadingTyping(true);
-      setPendingMessage(
-        "I’m currently asleep. Please wake the server so I can assist you."
-      );
+      if (!initialConversation.current) {
+        setLoadingTyping(true);
+        setPendingMessage(
+          "I’m currently asleep. Please wake the server so I can assist you."
+        );
+
+        initialConversation.current = true;
+      }
     } // eslint-disable-next-line
   }, [is_server_sleep]);
 
