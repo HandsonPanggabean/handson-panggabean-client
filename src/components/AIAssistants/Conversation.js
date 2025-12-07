@@ -157,7 +157,7 @@ const Conversation = (props) => {
             <Bot className="text-white w-7 h-7 dark:text-gray-900" />
           </div>
 
-          <div className="text-center text-gray-500 dark:text-black">
+          <div className="text-center text-white dark:text-black">
             Powered by Google AI
           </div>
 

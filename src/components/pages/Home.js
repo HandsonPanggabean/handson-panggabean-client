@@ -51,6 +51,10 @@ const Home = (props) => {
       setMessageHtml(
         '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Server is currently sleeping...</span></p>'
       );
+    } else {
+      setMessageHtml(
+        '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Greetings! 😁</span></p>'
+      );
     }
   }, [is_server_sleep]);
 
