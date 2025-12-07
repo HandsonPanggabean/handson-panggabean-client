@@ -20,17 +20,17 @@ import AIChat from "./components/AIAssistants/AIChat";
 
 // Apis
 import { getServerStatus } from "./apis/initial";
-import { sendMessageToMyEmail } from "./apis/email";
 
 // Helpers
 import useToastMessage from "./helpers/toast-message";
+import sendNotificationEmail from "./helpers/email";
 
 // React toastify
 import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const initial = useRef(null);
-  const initialConversation = useRef(null)
+  const initialConversation = useRef(null);
   const dispatch = useDispatch();
   const { showInfo, showError } = useToastMessage();
   const is_server_sleep = useSelector((state) => state.is_server_sleep);
@@ -48,13 +48,25 @@ function App() {
         message: "Server is waking up. Please wait a moment to use...",
       });
       const body = {
-        name: "Portfolio Project",
+        name: "Remainder",
         email: "hansenpanggabean8@gmail.com",
-        subject: "Request Awake Server",
-        message:
-          '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Someone is requesting to access server <a href="https://replit.com/@PaktuaBoedi/handson-panggabean-server" target="_blank">Awake server</a></span></p>',
+        title: "Request Awake Server",
+        message: `
+          <p style="text-align: left;">
+            <span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">
+              Someone is requesting to access server 
+              <a
+                href="https://replit.com/@PaktuaBoedi/handson-panggabean-server"
+                target="_blank"
+              >
+                Awake server
+              </a>
+            </span>
+          </p>
+        `,
       };
-      const response = await sendMessageToMyEmail(body);
+      const response = await sendNotificationEmail(body);
+
       if (response && response.data && response.data.success) {
         // for now just let is_server_sleep into false before integrate socket.io
         dispatch({
