@@ -30,6 +30,7 @@ import { ToastContainer, toast } from "react-toastify";
 
 function App() {
   const initial = useRef(null);
+  const initialConversation = useRef(null)
   const dispatch = useDispatch();
   const { showInfo, showError } = useToastMessage();
   const is_server_sleep = useSelector((state) => state.is_server_sleep);
@@ -127,6 +128,7 @@ function App() {
         is_server_sleep={is_server_sleep}
         handleWakeServer={handleWakeServer}
         showError={showError}
+        initialConversation={initialConversation}
       />
       <Footer />
     </div>
