@@ -48,7 +48,7 @@ function App() {
         message: "Server is waking up. Please wait a moment to use...",
       });
       const body = {
-        name: "Remainder",
+        name: "Reminder",
         email: "hansenpanggabean8@gmail.com",
         title: "Request Awake Server",
         message: `
