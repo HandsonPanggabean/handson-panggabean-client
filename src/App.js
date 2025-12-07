@@ -67,13 +67,11 @@ function App() {
       };
       const response = await sendNotificationEmail(body);
 
-      if (response && response.data && response.data.success) {
-        // for now just let is_server_sleep into false before integrate socket.io
-        dispatch({
-          type: "SET_SERVER_STATUS",
-          is_server_sleep: false,
-        });
-      }
+      // for now just let is_server_sleep into false before integrate socket.io
+      dispatch({
+        type: "SET_SERVER_STATUS",
+        is_server_sleep: false,
+      });
     } catch (err) {
       showError(err.response.data.message);
     }
