@@ -65,7 +65,7 @@ function App() {
           </p>
         `,
       };
-      const response = await sendNotificationEmail(body);
+      await sendNotificationEmail(body);
 
       // for now just let is_server_sleep into false before integrate socket.io
       dispatch({
