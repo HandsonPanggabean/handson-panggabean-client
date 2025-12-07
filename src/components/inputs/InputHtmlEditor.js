@@ -2,7 +2,7 @@ import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
 const InputHtmlEditor = (props) => {
-  const { htmlContent, setHtmlContent, theme } = props || {};
+  const { htmlContent, setHtmlContent, theme, is_server_sleep } = props || {};
 
   const handleEditorChange = (newValue) => {
     setHtmlContent(newValue);
@@ -11,6 +11,7 @@ const InputHtmlEditor = (props) => {
   return (
     <div>
       <Editor
+        disabled={is_server_sleep}
         apiKey={process.env.REACT_APP_TINY_MCE_API_KEY}
         value={htmlContent}
         onEditorChange={handleEditorChange}
