@@ -1,23 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 // React router dom
 // import { useNavigate } from "react-router-dom";
-
-// Sweetalert
-import Swal from "sweetalert2";
 
 // react lucide
 import { Send } from "lucide-react";
 
 // Helpers
 import { t } from "../../helpers/translator";
+import useToastMessage from "../../helpers/toast-message";
 
 // Apis
 import { sendMessageToMyEmail } from "../../apis/email";
 
 // Images & Icons
-import profile_picture_handson from "../../assets/images/profile_picture_handson.jpeg";
+import profile_picture_handson from "../../assets/images/profile_picture_handson.jpg";
 import linked_in_logo from "../../assets/icons/brands/linked_in_logo.avif";
 import instagram_logo from "../../assets/icons/brands/instagram_logo.webp";
 
@@ -33,8 +31,10 @@ import PortfolioProjects from "./Homes/PortfolioProjects";
 
 const Home = (props) => {
   const { theme } = props || {};
+  const { showError, showSuccess } = useToastMessage();
 
   const lang = useSelector((state) => state.lang);
+  const is_server_sleep = useSelector((state) => state.is_server_sleep);
 
   // const navigate = useNavigate();
 
@@ -45,6 +45,14 @@ const Home = (props) => {
   const [messageHtml, setMessageHtml] = useState(
     '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Greetings! 😁</span></p>'
   );
+
+  useEffect(() => {
+    if (is_server_sleep) {
+      setMessageHtml(
+        '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Server is currently sleeping...</span></p>'
+      );
+    }
+  }, [is_server_sleep]);
 
   const handleOnClickLogos = (url) => {
     window.open(url, "_blank");
@@ -62,40 +70,10 @@ const Home = (props) => {
 
       const response = await sendMessageToMyEmail(body);
       if (response && response.data && response.data.success) {
-        Swal.fire({
-          position: "center",
-          title: response.data.message,
-          icon: "success",
-          showConfirmButton: false,
-          timer: 3000,
-          width: "90%",
-          customClass: {
-            popup:
-              "bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg w-full max-w-xs",
-            title: "text-lg font-semibold text-gray-800 dark:text-white",
-            content: "text-sm text-gray-600",
-            confirmButton:
-              "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg",
-          },
-        });
+        showSuccess(response.data.message);
       }
     } catch (err) {
-      Swal.fire({
-        position: "center",
-        text: err,
-        icon: "error",
-        showConfirmButton: false,
-        timer: 3000,
-        width: "90%",
-        customClass: {
-          popup:
-            "bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg w-full max-w-xs",
-          title: "text-lg font-semibold text-gray-800 dark:text-white",
-          content: "text-sm text-gray-600",
-          confirmButton:
-            "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg",
-        },
-      });
+      showError(err.response.data.message);
     } finally {
       setLoading(false);
     }
@@ -103,8 +81,8 @@ const Home = (props) => {
 
   return (
     <div className="py-5 text-white bg-gray-200 dark:bg-gray-900 md:py-20">
-      <div className="flex flex-col items-center justify-center px-4 py-20 md:flex-row md:px-60">
-        <div className="md:w-2/5">
+      <div className="flex flex-col items-center justify-center px-4 py-2 xl:px-60 xl:flex-row xl:flex-wrap xl:justify-between">
+        <div className="xl:w-2/5">
           <div className="flex ">
             <img
               src={profile_picture_handson}
@@ -114,7 +92,7 @@ const Home = (props) => {
           </div>
         </div>
 
-        <div className="mt-10 text-center md:w-3/5 md:text-left md:mt-0">
+        <div className="mt-10 text-center md:w-3/5 xl:text-left xl:mt-0">
           <h1 className="text-4xl font-bold text-black md:text-5xl dark:text-white">
             {t("landing_page_intro_1", lang)}{" "}
             <span className="text-blue-900 dark:text-yellow-400">
@@ -127,7 +105,7 @@ const Home = (props) => {
           <p className="mt-4 text-black dark:text-gray-300">
             {t("landing_page_description", lang)}
           </p>
-          <div className="flex justify-center mt-6 gap-4 md:justify-start">
+          <div className="flex justify-center gap-4 mt-6 xl:justify-start">
             <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
@@ -191,7 +169,7 @@ const Home = (props) => {
           {t("contact_me_title", lang)}
         </h2>
         <div className="flex items-center justify-center mt-10">
-          <div className="w-full p-4 bg-gray-100 rounded-lg shadow-lg space-y-10 md:p-8 dark:bg-gray-800">
+          <div className="w-full p-4 space-y-10 bg-gray-100 rounded-lg shadow-lg md:p-8 dark:bg-gray-800">
             <div className="space-y-4">
               <div className="flex space-x-4">
                 <div className="w-1/2">
@@ -201,7 +179,9 @@ const Home = (props) => {
                   <input
                     type="text"
                     className="w-full p-2 text-black bg-white border border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
+                    placeholder="Your name"
                     onChange={({ target: { value } }) => setSenderName(value)}
+                    disabled={is_server_sleep}
                   />
                 </div>
                 <div className="w-1/2">
@@ -210,8 +190,10 @@ const Home = (props) => {
                   </label>
                   <input
                     type="email"
+                    placeholder="Your email"
                     className="w-full p-2 text-black bg-white border border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) => setSenderEmail(value)}
+                    disabled={is_server_sleep}
                   />
                 </div>
               </div>
@@ -222,10 +204,12 @@ const Home = (props) => {
                   </label>
                   <input
                     type="text"
+                    placeholder="Your email subject"
                     className="w-full p-2 text-black bg-white border border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-1 focus:ring-blue-900 dark:focus:ring-white"
                     onChange={({ target: { value } }) =>
                       setSenderEmailSubject(value)
                     }
+                    disabled={is_server_sleep}
                   />
                 </div>
               </div>
@@ -238,6 +222,7 @@ const Home = (props) => {
                   htmlContent={messageHtml}
                   setHtmlContent={setMessageHtml}
                   theme={theme}
+                  is_server_sleep={is_server_sleep}
                 />
               </div>
               <div>
@@ -249,20 +234,22 @@ const Home = (props) => {
                   dangerouslySetInnerHTML={{ __html: messageHtml }}
                 />
               </div>
-              <div className="flex justify-end">
-                <div
-                  className={`px-6 py-2 dark:bg-yellow-400 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500 cursor-${
-                    isLoading ? "not-allowed" : "pointer"
-                  } `}
-                  onClick={() => (!isLoading ? handleSendEmail() : null)}
-                >
-                  {isLoading ? (
-                    <LoadingAnimation />
-                  ) : (
-                    <Send className="w-6 h-6 dark:text-black" />
-                  )}
+              {!is_server_sleep ? (
+                <div className="flex justify-end">
+                  <div
+                    className={`px-6 py-2 dark:bg-yellow-400 bg-blue-900 text-white font-semibold rounded-md focus:outline-none focus:ring-2 dark:focus:ring-blue-500 cursor-${
+                      isLoading ? "not-allowed" : "pointer"
+                    } `}
+                    onClick={() => (!isLoading ? handleSendEmail() : null)}
+                  >
+                    {isLoading ? (
+                      <LoadingAnimation />
+                    ) : (
+                      <Send className="w-6 h-6 dark:text-black" />
+                    )}
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </div>
           </div>
         </div>
