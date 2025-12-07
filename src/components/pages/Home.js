@@ -17,7 +17,7 @@ import { t } from "../../helpers/translator";
 import { sendMessageToMyEmail } from "../../apis/email";
 
 // Images & Icons
-import profile_picture_handson from "../../assets/images/profile_picture_handson.jpeg";
+import profile_picture_handson from "../../assets/images/profile_picture_handson.jpg";
 import linked_in_logo from "../../assets/icons/brands/linked_in_logo.avif";
 import instagram_logo from "../../assets/icons/brands/instagram_logo.webp";
 
@@ -127,7 +127,7 @@ const Home = (props) => {
           <p className="mt-4 text-black dark:text-gray-300">
             {t("landing_page_description", lang)}
           </p>
-          <div className="flex justify-center mt-6 gap-4 md:justify-start">
+          <div className="flex justify-center gap-4 mt-6 md:justify-start">
             <div className="bg-gray-100 dark:bg-gray-700 hover:cursor-pointer rounded-xl">
               <div
                 className="m-2"
@@ -191,7 +191,7 @@ const Home = (props) => {
           {t("contact_me_title", lang)}
         </h2>
         <div className="flex items-center justify-center mt-10">
-          <div className="w-full p-4 bg-gray-100 rounded-lg shadow-lg space-y-10 md:p-8 dark:bg-gray-800">
+          <div className="w-full p-4 space-y-10 bg-gray-100 rounded-lg shadow-lg md:p-8 dark:bg-gray-800">
             <div className="space-y-4">
               <div className="flex space-x-4">
                 <div className="w-1/2">

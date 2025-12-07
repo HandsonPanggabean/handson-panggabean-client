@@ -14,13 +14,13 @@ import NotFound from "./components/pages/NotFound";
 // Components
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import AIChat from "./components/AIAssistans/AIChat";
+import AIChat from "./components/AIAssistants/AIChat";
 
 function App() {
   const [theme, setTheme] = useState(
-    typeof window !== "undefined" && localStorage.getItem("theme") === "light"
-      ? "light"
-      : "dark"
+    typeof window !== "undefined" && localStorage.getItem("theme") === "dark"
+      ? "dark"
+      : "light"
   );
 
   useEffect(() => {
