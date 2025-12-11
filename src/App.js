@@ -40,13 +40,15 @@ function App() {
       : "light"
   );
 
-  const handleWakeServer = async () => {
+  const handleWakeServer = async ({ onlySendEmailNotification }) => {
     toast.dismiss();
     try {
-      showInfo({
-        position: "top-right",
-        message: "Server is waking up. Please wait a moment to use...",
-      });
+      if (!onlySendEmailNotification) {
+        showInfo({
+          position: "top-right",
+          message: "Server is waking up. Please wait a moment to use...",
+        });
+      }
       const body = {
         name: "Reminder",
         email: "hansenpanggabean8@gmail.com",
@@ -67,11 +69,13 @@ function App() {
       };
       await sendNotificationEmail(body);
 
-      // for now just let is_server_sleep into false before integrate socket.io
-      dispatch({
-        type: "SET_SERVER_STATUS",
-        is_server_sleep: false,
-      });
+      if (!onlySendEmailNotification) {
+        // for now just let is_server_sleep into false before integrate socket.io
+        dispatch({
+          type: "SET_SERVER_STATUS",
+          is_server_sleep: false,
+        });
+      }
     } catch (err) {
       showError(err.response.data.message);
     }
@@ -81,6 +85,7 @@ function App() {
     try {
       await getServerStatus();
     } catch (err) {
+      handleWakeServer({ onlySendEmailNotification: true });
       dispatch({
         type: "SET_SERVER_STATUS",
         is_server_sleep: true,
