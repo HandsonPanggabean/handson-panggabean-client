@@ -118,6 +118,7 @@ import ccs_14 from "../../../assets/images/portfolioProjects/ccs/ccs_14.png";
 
 // Components
 import FullscreenImageViewer from "../../FullscreenImageViewer"; // Import the component
+import ImageWithLoader from "../../ImageWithLoader";
 
 const PortfolioProjects = (props) => {
   const { lang, t } = props || {};
@@ -439,7 +440,8 @@ const PortfolioProjects = (props) => {
                               } scale-95 opacity-70 -translate-x-5 blur-sm z-0` // Inactive images look slightly behind
                         }`}
                       >
-                        <img
+
+                        <ImageWithLoader
                           src={image.img_url}
                           alt={`slide-${name}-${idx}`}
                           className="object-contain w-full h-full rounded-lg"

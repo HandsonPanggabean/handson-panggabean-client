@@ -3,6 +3,9 @@ import { useEffect } from "react";
 // react lucide
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Components
+import ImageWithLoader from "./ImageWithLoader";
+
 const FullscreenImageViewer = ({
   images,
   currentIndex,
@@ -46,7 +49,7 @@ const FullscreenImageViewer = ({
         <ChevronLeft className="w-8 h-8" />
       </div>
 
-      <img
+      <ImageWithLoader
         src={images[currentIndex].img_url}
         alt={`fullscreen-${currentIndex}`}
         className="object-contain max-w-full max-h-full rounded-lg shadow-xl cursor-pointer"

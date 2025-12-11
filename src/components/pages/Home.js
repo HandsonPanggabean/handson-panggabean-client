@@ -28,6 +28,7 @@ import LoadingAnimation from "../LoadingAnimation";
 import Skills from "./Homes/Skills";
 import WorkExperiences from "./Homes/WorkExperiences";
 import PortfolioProjects from "./Homes/PortfolioProjects";
+import ImageWithLoader from "../ImageWithLoader";
 
 const Home = (props) => {
   const { theme } = props || {};
@@ -87,8 +88,8 @@ const Home = (props) => {
     <div className="py-5 text-white bg-gray-200 dark:bg-gray-900 md:py-20">
       <div className="flex flex-col items-center justify-center px-4 py-2 xl:px-60 xl:flex-row xl:flex-wrap xl:justify-between">
         <div className="xl:w-2/5">
-          <div className="flex ">
-            <img
+          <div className="flex">
+            <ImageWithLoader
               src={profile_picture_handson}
               alt="Handson's Profile"
               className="rounded-lg shadow-lg w-80"
