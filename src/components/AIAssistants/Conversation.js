@@ -17,10 +17,14 @@ const Conversation = (props) => {
   const { showError, initialConversation } = props || {};
 
   const lang = useSelector((state) => state.lang);
+  const is_ai_daily_limit_reached = useSelector(
+    (state) => state.is_ai_daily_limit_reached
+  );
 
   const dispatch = useDispatch();
 
   const hasInitiatedRef = useRef(false);
+  const sendingRef = useRef(false);
 
   const messages = useSelector((state) => state.messages);
   const is_server_sleep = useSelector((state) => state.is_server_sleep);
@@ -58,11 +62,25 @@ const Conversation = (props) => {
         }
       }
     } catch (error) {
-      showError(error.response.data.message);
+      const errResponse = error.response.data;
+      if (errResponse?.limit_quota_reached) {
+        dispatch({
+          type: "SET_AI_DAILY_LIMIT_REACHED",
+          is_ai_daily_limit_reached: true,
+        });
+        setPendingMessage(errResponse?.message);
+      } else {
+        showError(errResponse?.message);
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   const handleSendMessageToAssistant = async () => {
+    if (sendingRef.current) return;
+    sendingRef.current = true;
+
     try {
       setLoading(true);
       let finalMessages = [...messages];
@@ -80,7 +98,18 @@ const Conversation = (props) => {
         setPendingMessage(result.data.text);
       }
     } catch (error) {
-      showError(error.response.data.message);
+      const errResponse = error.response.data;
+      if (errResponse?.limit_quota_reached) {
+        dispatch({
+          type: "SET_AI_DAILY_LIMIT_REACHED",
+          is_ai_daily_limit_reached: true,
+        });
+        setPendingMessage(errResponse?.message);
+      } else {
+        showError(errResponse?.message);
+      }
+    } finally {
+      sendingRef.current = false;
     }
   };
 
@@ -107,11 +136,11 @@ const Conversation = (props) => {
           setIndex((prev) => prev + 1);
         }, 10);
 
-        if (index + 1 === text.length && onComplete) {
-          onComplete();
-        }
-
         return () => clearTimeout(timeout);
+      }
+
+      if (index === text.length && onComplete) {
+        onComplete();
       }
     }, [index, text, onComplete]);
 
@@ -130,10 +159,16 @@ const Conversation = (props) => {
     );
   };
 
+  const handleCloseAIModalChat = () => {
+    hasInitiatedRef.current = false;
+    dispatch({
+      type: "SET_AI_MODAL_CHAT",
+      is_open_ai_modal_chat: false,
+    });
+  };
+
   useEffect(() => {
     if (!is_server_sleep) {
-      // reset guard when server wakes up
-      hasInitiatedRef.current = false;
       handleInitiateAssistant();
     } else {
       if (!initialConversation.current) {
@@ -154,12 +189,7 @@ const Conversation = (props) => {
           </div>
           <button
             className="text-gray-500 hover:text-gray-700"
-            onClick={() =>
-              dispatch({
-                type: "SET_AI_MODAL_CHAT",
-                is_open_ai_modal_chat: false,
-              })
-            }
+            onClick={() => handleCloseAIModalChat()}
           >
             <X className="text-white w-7 h-7 dark:text-gray-900" />
           </button>
@@ -176,12 +206,7 @@ const Conversation = (props) => {
 
           <button
             className="text-gray-500 justify-self-end hover:text-gray-700"
-            onClick={() =>
-              dispatch({
-                type: "SET_AI_MODAL_CHAT",
-                is_open_ai_modal_chat: false,
-              })
-            }
+            onClick={() => handleCloseAIModalChat()}
           >
             <X className="text-white w-7 h-7 dark:text-gray-900" />
           </button>
@@ -241,7 +266,7 @@ const Conversation = (props) => {
       </div>
 
       <div className="flex p-4 border-t border-blue-900 rounded-xl md:rounded-none dark:border-yellow-400">
-        {is_server_sleep ? (
+        {is_server_sleep || is_ai_daily_limit_reached ? (
           <div className="flex items-center justify-center w-full">
             <div className="text-gray-500 dark:text-gray-300">
               Powered by Google AI
