@@ -61,11 +61,16 @@ import restful_api_icon_light from "../../../assets/icons/skills/restful_api_ico
 import restful_api_icon_dark from "../../../assets/icons/skills/restful_api_icon_dark.svg";
 import responsive_web_design_icon_light from "../../../assets/icons/skills/responsive_web_design_icon_light.svg";
 import responsive_web_design_icon_dark from "../../../assets/icons/skills/responsive_web_design_icon_dark.svg";
+import apple_app_icon from "../../../assets/icons/skills/apple_app_icon.svg";
+import android_app_icon from "../../../assets/icons/skills/android_app_icon.svg";
+import serverless_icon from "../../../assets/icons/skills/serverless_icon.svg";
+import serverless_icon_dark from "../../../assets/icons/skills/serverless_icon_dark.svg";
 
 import cookie_parser_icon from "../../../assets/icons/skills/cookie_parser_icon.png";
 import js_cookie_icon from "../../../assets/icons/skills/js_cookie_icon.png";
 import bcrypt_icon from "../../../assets/icons/skills/bcrypt_icon.jpg";
 import cors_icon from "../../../assets/icons/skills/cors_icon.png";
+import apple_app_icon_dark from "../../../assets/icons/skills/apple_app_icon_dark.png";
 
 const Skills = (props) => {
   const { theme, lang, t } = props || {};
@@ -122,6 +127,10 @@ const Skills = (props) => {
     { url: yarn_icon, name: "Yarn" },
     { url: html_5_icon, name: "HTML5" },
     { url: css_3_icon, name: "CSS3" },
+    {
+      url: theme && theme === "dark" ? serverless_icon_dark : serverless_icon,
+      name: "Serverless",
+    },
     { url: react_icon, name: "React" },
     { url: redux_icon, name: "Redux" },
     {
@@ -161,8 +170,13 @@ const Skills = (props) => {
     },
     { url: gitlab_icon, name: "GitLab" },
     { url: x_code_icon, name: "Xcode" },
+    {
+      url: theme && theme === "dark" ? apple_app_icon_dark : apple_app_icon,
+      name: "Apple App",
+    },
     { url: android_studio_icon, name: "Android Studio" },
-    { url: vs_code_icon, name: "Virtual Studio code" },
+    { url: android_app_icon, name: "Android App" },
+    { url: vs_code_icon, name: "Virtual Studio Code" },
     {
       url: theme && theme === "dark" ? jira_icon_dark : jira_icon_light,
       name: "Jira",
@@ -177,8 +191,8 @@ const Skills = (props) => {
         <h2 className="text-3xl font-bold text-center text-blue-900 md:text-4xl dark:text-yellow-400">
           {t("tech_stacks_title", lang)}
         </h2>
-        <div className="flex flex-wrap items-center justify-center px-4 mt-10 gap-10">
-          {/* <div className="flex items-center justify-center px-4 mt-10 space-y-10 gap-6"> */}
+        <div className="flex flex-wrap items-center justify-center gap-10 px-4 mt-10">
+          {/* <div className="flex items-center justify-center gap-6 px-4 mt-10 space-y-10"> */}
           {skills.map((skill, index) => (
             <div key={index} className="flex flex-col items-center">
               <div>
