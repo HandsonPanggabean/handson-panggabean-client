@@ -50,7 +50,7 @@ const Home = (props) => {
   useEffect(() => {
     if (is_server_sleep) {
       setMessageHtml(
-        '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Server is currently sleeping...</span></p>'
+        '<p style="text-align: left;"><span style="font-size: 18pt; font-family: verdana, geneva, sans-serif;">Give me a moment while the server gets ready.</span></p>'
       );
     } else {
       setMessageHtml(

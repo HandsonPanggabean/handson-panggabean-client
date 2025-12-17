@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 // React icons
 import { FaSun, FaMoon } from "react-icons/fa";
 
+// Lucide react icons
+import { Bot } from "lucide-react";
+
 // Images & Icons
 import white_icon_H from "../assets/icons/brands/white_icon_H.png";
 import black_icon_H from "../assets/icons/brands/black_icon_H.png";
@@ -15,10 +18,11 @@ const Navbar = ({ theme, setTheme }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const lang = useSelector((state) => state.lang);
+  const is_server_sleep = useSelector((state) => state.is_server_sleep);
 
   return (
     <nav className="sticky top-0 z-10 bg-white border-gray-200 dark:bg-black">
-      <div className="flex flex-wrap items-center justify-between p-4 mx-auto max-w-screen-xl">
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         <div
           onClick={() => navigate("/")}
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -32,8 +36,19 @@ const Navbar = ({ theme, setTheme }) => {
             Handson
           </span> */}
         </div>
-        <div className="flex items-center md:order-2 space-x-2 md:space-x-0 rtl:space-x-reverse">
-          <label className="inline-flex items-center mr-5 cursor-pointer">
+        <div className="flex items-center gap-2 space-x-2 md:gap-5 md:order-2 md:space-x-0 rtl:space-x-reverse">
+          {is_server_sleep ? (
+            <Bot
+              className="w-8 h-8 cursor-pointer dark:text-yellow-400"
+              onClick={() =>
+                dispatch({
+                  type: "SET_AI_MODAL_CHAT",
+                  is_open_ai_modal_chat: true,
+                })
+              }
+            />
+          ) : null}
+          <label className="inline-flex items-center cursor-pointer">
             <span className="mr-2 text-xl font-bold text-gray-900 dark:text-gray-300">
               EN
             </span>
@@ -56,7 +71,7 @@ const Navbar = ({ theme, setTheme }) => {
           </label>
           <button
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 bg-gray-200 rounded-lg dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all"
+            className="p-2 transition-all bg-gray-200 rounded-lg dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600"
           >
             {theme === "dark" ? (
               <FaSun className="text-xl text-yellow-500" />
@@ -111,7 +126,7 @@ const Navbar = ({ theme, setTheme }) => {
           </button> */}
           {/* <!-- Dropdown --> */}
           {/* <div
-            className="z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow divide-y divide-gray-100 dark:bg-gray-700"
+            className="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700"
             id="language-dropdown-menu"
           >
             <ul className="py-2 font-medium" role="none">
@@ -293,7 +308,7 @@ const Navbar = ({ theme, setTheme }) => {
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-language"
         >
-          <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black">
+          <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-black">
             {/* <li>
               <div
                 onClick={() => navigate("/")}

@@ -14,13 +14,7 @@ import LoadingAnimation from "../LoadingAnimation";
 import ChatMessage from "./ChatMessage";
 
 const Conversation = (props) => {
-  const {
-    setIsOpenModalChat,
-    is_server_sleep,
-    handleWakeServer,
-    showError,
-    initialConversation,
-  } = props || {};
+  const { showError, initialConversation } = props || {};
 
   const lang = useSelector((state) => state.lang);
 
@@ -29,18 +23,32 @@ const Conversation = (props) => {
   const hasInitiatedRef = useRef(false);
 
   const messages = useSelector((state) => state.messages);
+  const is_server_sleep = useSelector((state) => state.is_server_sleep);
 
   const [userMsg, setUserMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const [pendingMessage, setPendingMessage] = useState(null);
   const [isLoadingTyping, setLoadingTyping] = useState(false);
+  const [initialPendingMessage] = useState(
+    "Give me a moment while the server gets ready."
+  );
 
   const handleInitiateAssistant = async () => {
     if (hasInitiatedRef.current) return; // Prevent multiple executions
     hasInitiatedRef.current = true;
 
     try {
-      if (messages && Array.isArray(messages) && messages.length === 0) {
+      if (
+        messages &&
+        Array.isArray(messages) &&
+        (messages.length === 0 ||
+          (messages[0] &&
+            messages[0].role &&
+            messages[0].content &&
+            messages[0].role === "assistant" && // check if first messages role is assistant
+            messages[0].content === initialPendingMessage && // check if first messages content is same with initialPendingMessage
+            !messages[1])) // check if there is no second messages integrated by AI
+      ) {
         setLoading(true);
         const result = await initiateAssistant({ lang });
         if (result && result.data) {
@@ -124,13 +132,13 @@ const Conversation = (props) => {
 
   useEffect(() => {
     if (!is_server_sleep) {
+      // reset guard when server wakes up
+      hasInitiatedRef.current = false;
       handleInitiateAssistant();
     } else {
       if (!initialConversation.current) {
         setLoadingTyping(true);
-        setPendingMessage(
-          "I’m currently asleep. Please wake the server so I can assist you."
-        );
+        setPendingMessage(initialPendingMessage);
 
         initialConversation.current = true;
       }
@@ -146,7 +154,12 @@ const Conversation = (props) => {
           </div>
           <button
             className="text-gray-500 hover:text-gray-700"
-            onClick={() => setIsOpenModalChat(false)}
+            onClick={() =>
+              dispatch({
+                type: "SET_AI_MODAL_CHAT",
+                is_open_ai_modal_chat: false,
+              })
+            }
           >
             <X className="text-white w-7 h-7 dark:text-gray-900" />
           </button>
@@ -163,7 +176,12 @@ const Conversation = (props) => {
 
           <button
             className="text-gray-500 justify-self-end hover:text-gray-700"
-            onClick={() => setIsOpenModalChat(false)}
+            onClick={() =>
+              dispatch({
+                type: "SET_AI_MODAL_CHAT",
+                is_open_ai_modal_chat: false,
+              })
+            }
           >
             <X className="text-white w-7 h-7 dark:text-gray-900" />
           </button>
@@ -224,15 +242,9 @@ const Conversation = (props) => {
 
       <div className="flex p-4 border-t border-blue-900 rounded-xl md:rounded-none dark:border-yellow-400">
         {is_server_sleep ? (
-          <div className="flex items-center justify-between w-full">
-            <div className="text-gray-500 dark:text-white">
+          <div className="flex items-center justify-center w-full">
+            <div className="text-gray-500 dark:text-gray-300">
               Powered by Google AI
-            </div>
-            <div
-              className="px-3 py-2 text-white bg-blue-900 border border-blue-900 cursor-pointer dark:bg-yellow-400 dark:border-yellow-400 rounded-xl dark:text-black"
-              onClick={() => handleWakeServer()}
-            >
-              Wake server
             </div>
           </div>
         ) : (
