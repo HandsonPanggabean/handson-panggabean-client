@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // react lucide
 import { Bot } from "lucide-react";
@@ -13,16 +14,19 @@ import { useMediaQuery } from "react-responsive";
 import Conversation from "./Conversation";
 
 const AIChat = (props) => {
-  const { is_server_sleep, handleWakeServer, showError, initialConversation } =
-    props || {};
+  const { showError, initialConversation } = props || {};
   const smallScreen = useMediaQuery({ query: "(max-width: 767px)" });
 
-  const [isOpenModalChat, setIsOpenModalChat] = useState(false);
+  const dispatch = useDispatch();
+  const is_open_ai_modal_chat = useSelector(
+    (state) => state.is_open_ai_modal_chat
+  );
+  const is_server_sleep = useSelector((state) => state.is_server_sleep);
 
   return (
     <div className="relative z-20 h-full">
       <AnimatePresence>
-        {isOpenModalChat && (
+        {is_open_ai_modal_chat && (
           <motion.div
             key="modal"
             initial={{
@@ -45,9 +49,6 @@ const AIChat = (props) => {
             className="fixed inset-0 z-30 flex items-center justify-center"
           >
             <Conversation
-              setIsOpenModalChat={setIsOpenModalChat}
-              is_server_sleep={is_server_sleep}
-              handleWakeServer={handleWakeServer}
               showError={showError}
               initialConversation={initialConversation}
             />
@@ -56,12 +57,17 @@ const AIChat = (props) => {
       </AnimatePresence>
 
       {/* Chat Button */}
-      {!isOpenModalChat && (
+      {!is_open_ai_modal_chat && !is_server_sleep && (
         <motion.div
           initial={{ scale: 1 }}
           whileTap={{ scale: 0.9 }}
           className="fixed p-4 text-white transition-opacity duration-300 bg-blue-900 rounded-full shadow-lg cursor-pointer bottom-8 right-8 md:bottom-16 md:right-16 dark:bg-yellow-400 focus:outline-none"
-          onClick={() => setIsOpenModalChat(true)}
+          onClick={() =>
+            dispatch({
+              type: "SET_AI_MODAL_CHAT",
+              is_open_ai_modal_chat: true,
+            })
+          }
         >
           <Bot className="w-10 h-10 dark:text-black" />
         </motion.div>
