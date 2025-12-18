@@ -1,9 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-// react lucide
-import { Bot } from "lucide-react";
-
 // framer-motion
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -12,6 +9,7 @@ import { useMediaQuery } from "react-responsive";
 
 // Components
 import Conversation from "./Conversation";
+import SpinningAI from "./SpinningAI";
 
 const AIChat = (props) => {
   const { showError, initialConversation } = props || {};
@@ -69,7 +67,7 @@ const AIChat = (props) => {
             })
           }
         >
-          <Bot className="w-10 h-10 dark:text-black" />
+          <SpinningAI />
         </motion.div>
       )}
     </div>
