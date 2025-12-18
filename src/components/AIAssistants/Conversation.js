@@ -74,6 +74,7 @@ const Conversation = (props) => {
       }
     } finally {
       setLoading(false);
+      setLoadingTyping(true);
     }
   };
 
@@ -110,6 +111,8 @@ const Conversation = (props) => {
       }
     } finally {
       sendingRef.current = false;
+      setLoading(false);
+      setLoadingTyping(true);
     }
   };
 
