@@ -423,24 +423,15 @@ const PortfolioProjects = (props) => {
                     >
                       <div
                         className={`relative flex items-center justify-center bg-gray-300 dark:bg-gray-700 rounded-lg transition-all duration-500 ${
-                          image.activeIndex
-                            ? `w-[323px] ${
-                                name === "X0PA" ? "h-[250px]" : "h-[500px]"
-                              } md:w-[400px] ${
-                                name === "X0PA"
-                                  ? "md:h-[300px]"
-                                  : "md:h-[600px]"
-                              } scale-100 opacity-100 z-10 -ml-24 md:-ml-14` // Active image is fully visible
-                            : `w-[190px] ${
-                                name === "X0PA" ? "h-[225px]" : "h-[400px]"
-                              } md:w-[340px] ${
-                                name === "X0PA"
-                                  ? "md:h-[250px]"
-                                  : "md:h-[550px]"
-                              } scale-95 opacity-70 -translate-x-5 blur-sm z-0` // Inactive images look slightly behind
+                          image.activeIndex && name === "X0PA"
+                            ? "w-[323px] h-[250px] md:w-[400px] md:h-[300px] scale-100 opacity-100 z-10 -ml-24 md:-ml-14" // Active image X0PA project is fully visible
+                            : image.activeIndex && name !== "X0PA"
+                            ? "w-[323px] h-[500px] md:w-[400px] md:h-[600px] scale-100 opacity-100 z-10 -ml-24 md:-ml-14" // Active image is fully visible
+                            : !image.activeIndex && name === "X0PA"
+                            ? "w-[190px] h-[225px] md:w-[340px] md:h-[250px] scale-95 opacity-70 -translate-x-5 blur-sm z-0 " // Inactive images X0PA project look slightly behind
+                            : "w-[190px] h-[400px] md:w-[340px] md:h-[550px] scale-95 opacity-70 -translate-x-5 blur-sm z-0" // Inactive images look slightly behind
                         }`}
                       >
-
                         <ImageWithLoader
                           src={image.img_url}
                           alt={`slide-${name}-${idx}`}
